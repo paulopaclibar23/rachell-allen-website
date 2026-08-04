@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/dist/app.min.css?v=1785830305204"></head>
+    <link rel="stylesheet" href="../assets/dist/app.min.css?v=1785836141707"></head>
 <body>
     <div class="admin-layout-container">
         
@@ -51,7 +51,7 @@
                     </div>
                 </a>
                 
-                <a href="../admin/index.html" class="admin-sidebar__link ">
+                <a href="../admin/crm/kanban/index.html" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">⚡</span>
                         <span>Admissions Pipeline</span>
@@ -182,7 +182,7 @@
             <!-- ================= DYNAMIC MAIN PAGE CONTENT ================= -->
             <main class="admin-main-content" id="main-content">
                 <div class="workspace-page">
-    <div class="workspace-header d-flex justify-between align-center mb-5">
+    <div class="workspace-header d-flex justify-between align-center mb-5 flex-wrap gap-3">
         <div>
             <h2 class="workspace-title m-0">Admissions Dashboard Overview</h2>
             <p class="text-muted m-0">Real-time indicators, pipeline conversion analytics, and enrollment statistics</p>
@@ -197,26 +197,14 @@
                 <select name="range" id="range" onchange="document.getElementById('dashboardRangeForm').submit()"
                     class="form-control"
                     style="padding: 6px 12px; height: 38px; width: 160px; font-size: var(--font-size-small);">
-                    <option value="today" 
-Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 17
->Today</option>
-                    <option value="week" 
-Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 18
->Last 7 Days</option>
-                    <option value="month" 
-Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 19
->Last 30 Days</option>
-                    <option value="quarter" 
-Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 20
->Last 90 Days</option>
-                    <option value="year" 
-Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 21
->Last 365 Days</option>
+                    <option value="today" selected>Today</option>
+                    <option value="week" >Last 7 Days</option>
+                    <option value="month" >Last 30 Days</option>
+                    <option value="quarter" >Last 90 Days</option>
+                    <option value="year" >Last 365 Days</option>
                 </select>
             </form>
-            <a href="/admin/dashboard?range=
-Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 24
-&refresh=1"
+            <a href="/admin/dashboard?range=today&refresh=1"
                 class="btn btn--secondary d-flex align-center gap-2"
                 style="padding: 6px 14px; height: 38px; font-size: var(--font-size-small); font-weight: 600;">
                 🔄 Refresh Cache
@@ -283,9 +271,7 @@ Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scr
                 <div>
                     <span class="kpi-card-dashboard__label">Pending Payments</span>
                     <h3 class="kpi-card-dashboard__value" style="color: #f59e0b;">
-                        
-Warning: Undefined array key "pending_payments" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 98
-</h3>
+                        14</h3>
                 </div>
                 <span class="kpi-card-dashboard__icon"
                     style="background-color: rgba(245, 158, 11, 0.05); color: #f59e0b;">💳</span>
@@ -300,9 +286,7 @@ Warning: Undefined array key "pending_payments" in C:\Users\paulo\.gemini\antigr
             <div class="d-flex justify-between align-start">
                 <div>
                     <span class="kpi-card-dashboard__label">Revenue Summary</span>
-                    <h3 class="kpi-card-dashboard__value">₱
-Warning: Undefined array key "revenue_summary" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 113
-0.00                    </h3>
+                    <h3 class="kpi-card-dashboard__value">₱2,150,000.00                    </h3>
                 </div>
                 <span class="kpi-card-dashboard__icon"
                     style="background-color: rgba(40, 55, 120, 0.05); color: var(--color-primary);">💰</span>
@@ -318,9 +302,7 @@ Warning: Undefined array key "revenue_summary" in C:\Users\paulo\.gemini\antigra
                 <div>
                     <span class="kpi-card-dashboard__label">Admissions Rate</span>
                     <h3 class="kpi-card-dashboard__value" style="color: #8b5cf6;">
-                        
-Warning: Undefined array key "conversion_rate_percent" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 130
-%</h3>
+                        58.1%</h3>
                 </div>
                 <span class="kpi-card-dashboard__icon"
                     style="background-color: rgba(139, 92, 246, 0.05); color: #8b5cf6;">📈</span>
@@ -347,11 +329,51 @@ Warning: Undefined array key "conversion_rate_percent" in C:\Users\paulo\.gemini
                         </tr>
                     </thead>
                     <tbody>
-                        
-Warning: Undefined array key "pipeline_distribution" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 157
-
-Warning: foreach() argument must be of type array|object, null given in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 157
-                    </tbody>
+                                                    <tr>
+                                <td>
+                                    <div class="d-flex align-center gap-2">
+                                        <span
+                                            style="width: 8px; height: 8px; border-radius: var(--radius-full); background-color: var(--color-secondary); display: inline-block;"></span>
+                                        <strong>New Inquiry</strong>
+                                    </div>
+                                </td>
+                                <td style="text-align: right; font-weight: 600; color: var(--color-primary);">
+                                    32</td>
+                            </tr>
+                                                    <tr>
+                                <td>
+                                    <div class="d-flex align-center gap-2">
+                                        <span
+                                            style="width: 8px; height: 8px; border-radius: var(--radius-full); background-color: var(--color-secondary); display: inline-block;"></span>
+                                        <strong>Counselor Follow-up</strong>
+                                    </div>
+                                </td>
+                                <td style="text-align: right; font-weight: 600; color: var(--color-primary);">
+                                    24</td>
+                            </tr>
+                                                    <tr>
+                                <td>
+                                    <div class="d-flex align-center gap-2">
+                                        <span
+                                            style="width: 8px; height: 8px; border-radius: var(--radius-full); background-color: var(--color-secondary); display: inline-block;"></span>
+                                        <strong>Payment Verification</strong>
+                                    </div>
+                                </td>
+                                <td style="text-align: right; font-weight: 600; color: var(--color-primary);">
+                                    14</td>
+                            </tr>
+                                                    <tr>
+                                <td>
+                                    <div class="d-flex align-center gap-2">
+                                        <span
+                                            style="width: 8px; height: 8px; border-radius: var(--radius-full); background-color: var(--color-secondary); display: inline-block;"></span>
+                                        <strong>Enrolled Active</strong>
+                                    </div>
+                                </td>
+                                <td style="text-align: right; font-weight: 600; color: var(--color-primary);">
+                                    86</td>
+                            </tr>
+                                            </tbody>
                 </table>
             </div>
         </div>
@@ -407,33 +429,25 @@ Warning: foreach() argument must be of type array|object, null given in C:\Users
                 <div class="email-stat-item d-flex justify-between align-center mb-3">
                     <span class="text-muted font-weight-500">Emails Delivered:</span>
                     <strong class="color-success"
-                        style="color: #10b981; font-size: 1.1rem;">
-Warning: Undefined array key "email_delivered" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 246
-</strong>
+                        style="color: #10b981; font-size: 1.1rem;">142</strong>
                 </div>
                 <div class="email-stat-item d-flex justify-between align-center mb-3">
                     <span class="text-muted font-weight-500">Delivery Bounces:</span>
                     <strong class="color-danger"
-                        style="color: #ef4444; font-size: 1.1rem;">
-Warning: Undefined array key "email_bounced" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 251
-</strong>
+                        style="color: #ef4444; font-size: 1.1rem;">2</strong>
                 </div>
 
-                
-Warning: Undefined array key "email_delivered" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 255
-
-Warning: Undefined array key "email_bounced" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 255
-                <div
+                                <div
                     style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md); margin-top: var(--spacing-md);">
                     <div class="d-flex justify-between align-center mb-2">
                         <span class="font-weight-600" style="color: var(--color-primary);">Deliverability Rate:</span>
                         <strong
-                            style="color: var(--color-primary); font-size: 1.2rem;">100%</strong>
+                            style="color: var(--color-primary); font-size: 1.2rem;">98.61%</strong>
                     </div>
                     <div class="progress-bar-bg"
                         style="width: 100%; height: 8px; background-color: rgba(40, 55, 120, 0.08); border-radius: var(--radius-full); overflow: hidden;">
                         <div class="progress-bar-fill"
-                            style="width: 100%; height: 100%; background-color: #10b981;">
+                            style="width: 98.61%; height: 100%; background-color: #10b981;">
                         </div>
                     </div>
                 </div>
@@ -563,7 +577,7 @@ Warning: Undefined array key "email_bounced" in C:\Users\paulo\.gemini\antigravi
     </div>
 
     <!-- Scripts Loader -->
-    <script defer src="../assets/dist/app.min.js?v=1785830305204"></script>    <script>
+    <script defer src="../assets/dist/app.min.js?v=1785836141707"></script>    <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('adminSidebar');
             if (sidebar) {
