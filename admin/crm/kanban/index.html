@@ -19,7 +19,7 @@
             }
         })();
     </script>
-    <title>CRM Pipeline Kanban - Rachell Allen Admin</title>
+    <title>Admissions CRM Pipeline Kanban - Rachell Allen Admin</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../../assets/dist/app.min.css?v=1785836141707"></head>
+    <link rel="stylesheet" href="scratch/assets/dist/app.min.css?v=d7b1ab63"></head>
 <body>
     <div class="admin-layout-container">
         
         <!-- ================= FIXED LEFT SIDEBAR ================= -->
         <aside class="admin-sidebar" id="adminSidebar">
             <div class="admin-sidebar__logo-area">
-                <a href="../../../admin/index.html" class="admin-sidebar__logo">
-                    <img src="../../../assets/img/ra-logo2.png" alt="Rachell Allen Logo">
+                <a href="/admin/dashboard" class="admin-sidebar__logo">
+                    <img src="/assets/img/ra-logo2.png" alt="Rachell Allen Logo">
                     <span>Admissions Console</span>
                 </a>
                 <button class="admin-mobile-toggle" onclick="toggleSidebar()" style="color: var(--color-white); font-size: 1.1rem; padding: 2px 6px;">✕</button>
@@ -44,14 +44,14 @@
             <nav class="admin-sidebar__menu">
                 <div class="admin-sidebar__menu-label">Analytics & CRM</div>
                 
-                <a href="../../../admin/index.html" class="admin-sidebar__link ">
+                <a href="/admin/dashboard" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">📊</span>
                         <span>Console Dashboard</span>
                     </div>
                 </a>
                 
-                <a href="../../../admin/crm/kanban/index.html" class="admin-sidebar__link ">
+                <a href="/admin/crm/kanban" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">⚡</span>
                         <span>Admissions Pipeline</span>
@@ -60,14 +60,14 @@
                 
                 <div class="admin-sidebar__menu-label">Academic Offerings</div>
                 
-                <a href="../../../admin/programs/index.html" class="admin-sidebar__link ">
+                <a href="/admin/programs" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">🎓</span>
                         <span>Review Programs</span>
                     </div>
                 </a>
                 
-                <a href="../../../admin/schedules/index.html" class="admin-sidebar__link ">
+                <a href="/admin/schedules" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">📅</span>
                         <span>Class Schedules</span>
@@ -113,14 +113,14 @@
                     </div>
                 </a>
                 
-                <a href="../../../admin/users/index.html" class="admin-sidebar__link ">
+                <a href="/admin/users" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">👥</span>
                         <span>User Directories</span>
                     </div>
                 </a>
                 
-                <a href="../../../admin/index.html" class="admin-sidebar__link ">
+                <a href="/admin/settings" class="admin-sidebar__link ">
                     <div class="admin-sidebar__link-content">
                         <span class="admin-sidebar__link-icon">⚙️</span>
                         <span>Global Settings</span>
@@ -166,7 +166,7 @@
                     <span style="width: 1px; height: 24px; background-color: var(--color-border); margin: 0 4px;"></span>
                     
                     <!-- Profile metadata dropdown -->
-                    <a href="../../../admin/users/index.html" class="admin-header-bar__profile">
+                    <a href="/admin/users" class="admin-header-bar__profile">
                         <div class="admin-header-bar__avatar">
                             SA                        </div>
                         <div style="display: flex; flex-direction: column;">
@@ -175,23 +175,952 @@
                         </div>
                     </a>
                     
-                    <a href="../../../login/index.html" class="btn btn--outline btn--sm" style="padding: 8px 12px; font-size: 0.85em; font-weight: 600;">Sign Out</a>
+                    <a href="/logout" class="btn btn--outline btn--sm" style="padding: 8px 12px; font-size: 0.85em; font-weight: 600;">Sign Out</a>
                 </div>
             </header>
             
             <!-- ================= DYNAMIC MAIN PAGE CONTENT ================= -->
             <main class="admin-main-content" id="main-content">
                 
-Warning: include(C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\scratch/../src/Modules/CRM/Views/kanban.php): Failed to open stream: No such file or directory in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\scratch\render_admin_export.php on line 21
+<div class="crm-dashboard-layout">
+    <!-- Top Sticky Header Area -->
+    <div class="crm-console-header">
+        <div>
+            <h1 class="m-0">Admissions CRM Console</h1>
+            <p class="text-muted m-0">Manage pipelines, student enrollments, and counselor tasks</p>
+        </div>
+        
+        <!-- Toggle buttons Board vs List -->
+        <div class="view-toggle-bar">
+            <button class="view-toggle-btn view-toggle-btn--active" id="btnKanbanView">
+                <span style="font-size:1.1rem; margin-right:4px;">📊</span> Pipeline Board
+            </button>
+            <button class="view-toggle-btn" id="btnListView">
+                <span style="font-size:1.1rem; margin-right:4px;">📋</span> Inquiry Directory
+            </button>
+        </div>
+    </div>
 
-Warning: include(): Failed opening 'C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\scratch/../src/Modules/CRM/Views/kanban.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\scratch\render_admin_export.php on line 21
+    <!-- 1. KPI Widgets Grid -->
+    <div class="kpi-grid mb-4">
+        <div class="kpi-card border-blue">
+            <div class="kpi-card__main">
+                <div class="kpi-card__label">Total Inquiries</div>
+                <div class="kpi-card__value">148</div>
+                <div class="kpi-card__trend text-success">↑ 14% this month</div>
+            </div>
+            <div class="kpi-card__icon bg-blue">📥</div>
+        </div>
+
+        <div class="kpi-card border-orange">
+            <div class="kpi-card__main">
+                <div class="kpi-card__label">Today's Follow-ups</div>
+                <div class="kpi-card__value">1</div>
+                <div class="kpi-card__trend text-warning">Pending outreach</div>
+            </div>
+            <div class="kpi-card__icon bg-orange">📞</div>
+        </div>
+
+        <div class="kpi-card border-pink">
+            <div class="kpi-card__main">
+                <div class="kpi-card__label">Pending Payments</div>
+                <div class="kpi-card__value">0</div>
+                <div class="kpi-card__trend text-muted">Awaiting confirmation</div>
+            </div>
+            <div class="kpi-card__icon bg-pink">💸</div>
+        </div>
+
+        <div class="kpi-card border-green">
+            <div class="kpi-card__main">
+                <div class="kpi-card__label">Enrolled Students</div>
+                <div class="kpi-card__value">86</div>
+                <div class="kpi-card__trend text-success">58.1% conversion rate</div>
+            </div>
+            <div class="kpi-card__icon bg-green">🎓</div>
+        </div>
+    </div>
+
+    <!-- 2. Interactive Filter Bar -->
+    <div class="search-filter-section mb-4">
+        <form action="/admin/crm/kanban" method="GET" class="filter-form" id="filterForm">
+            <div class="filter-form__grid">
+                <div class="filter-group">
+                    <label class="filter-label">Search Student</label>
+                    <input type="text" name="search" value="" placeholder="Name, email, mobile number..." class="filter-control">
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Country</label>
+                    <select name="country" class="filter-control">
+                        <option value="">All Countries</option>
+                                                    <option value="Philippines" >
+                                Philippines                            </option>
+                                            </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Program Course</label>
+                    <select name="course_id" class="filter-control">
+                        <option value="">All Programs</option>
+                                                    <option value="17" >
+                                25-DAY LIVE NCLEX REVIEW COURSE                            </option>
+                                                    <option value="18" >
+                                FINAL COACHING PROGRAM                            </option>
+                                                    <option value="19" >
+                                21-DAY ONLINE WEBINAR COURSE                            </option>
+                                            </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Assigned Adviser</label>
+                    <select name="counselor_id" class="filter-control">
+                        <option value="">All Advisers</option>
+                                                    <option value="13" >
+                                Mary Chyles Bautista                            </option>
+                                                    <option value="1" >
+                                Super Admin                            </option>
+                                            </select>
+                </div>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn--primary btn--sm">Apply Filters</button>
+                    <a href="/admin/crm/kanban" class="btn btn--ghost btn--sm">Reset</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <div class="crm-view-container">
+        
+        <!-- ================= KANBAN PIPELINE VIEW ================= -->
+        <div class="view-panel" id="panelKanban">
+            <div class="kanban-scroller">
+                <div class="kanban-lane-container">
+                                            <div class="kanban-col-lane" data-stage-id="1">
+                            <div class="kanban-lane-header" style="border-top-color: #e5e7eb;">
+                                <div class="kanban-lane-title">
+                                    Inquiry                                </div>
+                                <span class="kanban-lane-badge">1</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="1">
+                                                                    <!-- Draggable Card Card -->
+                                    <div class="kanban-student-card" 
+                                         draggable="true" 
+                                         data-lead-id="1"
+                                         onclick="window.location.href='/admin/crm/lead/1'">
+                                        
+                                        <div class="kanban-card-top">
+                                            <span class="temp-badge" style="background-color: rgba(127, 128, 138, 0.1); color: #7F808A;">
+                                                Cold                                            </span>
+                                            <span class="card-id-text">ID #1</span>
+                                        </div>
+
+                                        <h4 class="kanban-card-name">Paulo Paclibar</h4>
+                                        <div class="kanban-card-details">
+                                            <div>📍 Philippines</div>
+                                            <div>📧 paulo@rachellallen.net</div>
+                                        </div>
+
+                                        <div class="kanban-card-footer">
+                                            <div class="card-adviser-pill">
+                                                👤 Unassigned                                            </div>
+                                            <div class="interaction-pill">
+                                                📝 0                                            </div>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="2">
+                            <div class="kanban-lane-header" style="border-top-color: #fcd34d;">
+                                <div class="kanban-lane-title">
+                                    For Follow-up                                </div>
+                                <span class="kanban-lane-badge">1</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="2">
+                                                                    <!-- Draggable Card Card -->
+                                    <div class="kanban-student-card" 
+                                         draggable="true" 
+                                         data-lead-id="2"
+                                         onclick="window.location.href='/admin/crm/lead/2'">
+                                        
+                                        <div class="kanban-card-top">
+                                            <span class="temp-badge" style="background-color: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                                                Warm                                            </span>
+                                            <span class="card-id-text">ID #2</span>
+                                        </div>
+
+                                        <h4 class="kanban-card-name">Marlon Azurin</h4>
+                                        <div class="kanban-card-details">
+                                            <div>📍 Philippines</div>
+                                            <div>📧 marlon@gmail.com</div>
+                                        </div>
+
+                                        <div class="kanban-card-footer">
+                                            <div class="card-adviser-pill">
+                                                👤 Unassigned                                            </div>
+                                            <div class="interaction-pill">
+                                                📝 1                                            </div>
+                                        </div>
+                                    </div>
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="3">
+                            <div class="kanban-lane-header" style="border-top-color: #60a5fa;">
+                                <div class="kanban-lane-title">
+                                    Interested                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="3">
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="4">
+                            <div class="kanban-lane-header" style="border-top-color: #f87171;">
+                                <div class="kanban-lane-title">
+                                    Awaiting Payment                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="4">
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="5">
+                            <div class="kanban-lane-header" style="border-top-color: #f472b6;">
+                                <div class="kanban-lane-title">
+                                    Payment Submitted                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="5">
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="6">
+                            <div class="kanban-lane-header" style="border-top-color: #34d399;">
+                                <div class="kanban-lane-title">
+                                    Payment Verified                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="6">
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="7">
+                            <div class="kanban-lane-header" style="border-top-color: #10b981;">
+                                <div class="kanban-lane-title">
+                                    Enrolled                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="7">
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="8">
+                            <div class="kanban-lane-header" style="border-top-color: #059669;">
+                                <div class="kanban-lane-title">
+                                    Completed                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="8">
+                                                            </div>
+                        </div>
+                                            <div class="kanban-col-lane" data-stage-id="9">
+                            <div class="kanban-lane-header" style="border-top-color: #6b7280;">
+                                <div class="kanban-lane-title">
+                                    Alumni                                </div>
+                                <span class="kanban-lane-badge">0</span>
+                            </div>
+
+                            <!-- Lane Drag Target Area -->
+                            <div class="kanban-cards-wrapper" data-stage-id="9">
+                                                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <!-- ================= INQUIRY DIRECTORY TABLE VIEW ================= -->
+        <div class="view-panel d-none" id="panelList">
+            <div class="crm-table-container">
+                <table class="directory-table">
+                    <thead>
+                        <tr>
+                            <th>Student Profile</th>
+                            <th>Target Program / Schedule</th>
+                            <th>Country</th>
+                            <th>Lead Temp</th>
+                            <th>Adviser Assigned</th>
+                            <th>Pipeline Status</th>
+                            <th style="text-align:right;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                                    <tr>
+                                <td colspan="7" style="text-align:center; padding:3rem; color:var(--color-text-muted);">
+                                    No captured inquiries match the search filters.
+                                </td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+
+            <!-- Table Pagination -->
+            
+Warning: Undefined variable $total_pages in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\CRM\Views\dashboard.php on line 368
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR STATS & METRICS SUMMARY GRID -->
+    <div class="crm-sidebar-stats-section mt-5">
+        <div class="grid-3">
+            <!-- Top Programs Card -->
+            <div class="sidebar-stats-card">
+                <h3 class="stats-card-title">🔥 Top Enrolled Programs</h3>
+                <div class="stats-list">
+                                                                        <div class="stats-item">
+                                <span>25-DAY LIVE NCLEX REVIEW COURSE</span>
+                                <span class="badge badge--primary">1 leads</span>
+                            </div>
+                                                            </div>
+            </div>
+
+            <!-- Counselor Leaderboard Card -->
+            <div class="sidebar-stats-card">
+                <h3 class="stats-card-title">🏆 Counselor Assignments</h3>
+                <div class="stats-list">
+                                                                        <div class="stats-item">
+                                <span>👤 Mary Chyles Bautista</span>
+                                <span class="badge badge--secondary">1 Assigned</span>
+                            </div>
+                                                            </div>
+            </div>
+
+            <!-- Upcoming Classes Card -->
+            <div class="sidebar-stats-card">
+                <h3 class="stats-card-title">📅 Upcoming Cohort Runs</h3>
+                <div class="stats-list">
+                                                                        <div class="stats-item-details">
+                                <div class="upcoming-prog-name">FINAL COACHING PROGRAM</div>
+                                <div class="upcoming-prog-meta">
+                                    📅 Starts: Aug 10, 2026 | 📍 Makati City Main Branch                                </div>
+                            </div>
+                                                    <div class="stats-item-details">
+                                <div class="upcoming-prog-name">21-DAY ONLINE WEBINAR COURSE</div>
+                                <div class="upcoming-prog-meta">
+                                    📅 Starts: Aug 15, 2026 | 📍 Online Live Webinar Run                                </div>
+                            </div>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Drag-and-drop controller JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. View Toggler logic
+    const btnKanbanView = document.getElementById('btnKanbanView');
+    const btnListView = document.getElementById('btnListView');
+    const panelKanban = document.getElementById('panelKanban');
+    const panelList = document.getElementById('panelList');
+
+    if (btnKanbanView && btnListView && panelKanban && panelList) {
+        btnKanbanView.addEventListener('click', () => {
+            btnKanbanView.classList.add('view-toggle-btn--active');
+            btnListView.classList.remove('view-toggle-btn--active');
+            panelKanban.classList.remove('d-none');
+            panelList.classList.add('d-none');
+        });
+
+        btnListView.addEventListener('click', () => {
+            btnListView.classList.add('view-toggle-btn--active');
+            btnKanbanView.classList.remove('view-toggle-btn--active');
+            panelList.classList.remove('d-none');
+            panelKanban.classList.add('d-none');
+        });
+    }
+
+    // 2. HTML5 Drag & Drop controller logic
+    const cards = document.querySelectorAll('.kanban-student-card');
+    const columns = document.querySelectorAll('.kanban-cards-wrapper');
+
+    cards.forEach(card => {
+        card.addEventListener('dragstart', (e) => {
+            e.stopPropagation(); // Avoid bubbling up
+            card.classList.add('kanban-card--dragging');
+            e.dataTransfer.setData('text/plain', card.dataset.leadId);
+            e.dataTransfer.effectAllowed = 'move';
+        });
+
+        card.addEventListener('dragend', () => {
+            card.classList.remove('kanban-card--dragging');
+            columns.forEach(col => col.classList.remove('kanban-col__cards--dragover'));
+        });
+    });
+
+    columns.forEach(col => {
+        col.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            col.classList.add('kanban-col__cards--dragover');
+        });
+
+        col.addEventListener('dragleave', () => {
+            col.classList.remove('kanban-col__cards--dragover');
+        });
+
+        col.addEventListener('drop', async (e) => {
+            e.preventDefault();
+            col.classList.remove('kanban-col__cards--dragover');
+            
+            const leadId = e.dataTransfer.getData('text/plain');
+            const targetStageId = col.dataset.stageId;
+            const draggedCard = document.querySelector(`.kanban-student-card[data-lead-id="${leadId}"]`);
+            
+            if (!draggedCard || !targetStageId) return;
+
+            const originalParent = draggedCard.parentNode;
+            const originalStageId = originalParent.dataset.stageId;
+            
+            // Avoid drop on same lane
+            if (originalStageId === targetStageId) return;
+
+            // Optimistically move card visually
+            col.appendChild(draggedCard);
+            updateLanesCounters();
+
+            // Submit AJAX stage update request
+            try {
+                // Get CSRF Token
+                const csrfToken = document.querySelector('input[name="csrf_token"]')?.value || '';
+
+                const formData = new FormData();
+                formData.append('lead_id', leadId);
+                formData.append('new_stage_id', targetStageId);
+                formData.append('csrf_token', csrfToken);
+
+                const response = await fetch('/api/crm/lead/stage', {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    if (window.Components) {
+                        window.Components.showToast(`Lead ID #${leadId} stage updated successfully!`);
+                    }
+                } else {
+                    // Revert visual drag if update failed
+                    originalParent.appendChild(draggedCard);
+                    updateLanesCounters();
+                    
+                    const errMsg = result.error || 'Unable to complete stage transition.';
+                    if (window.Components) {
+                        window.Components.showToast(errMsg, 'error');
+                    }
+                }
+            } catch (err) {
+                // Revert visual drag if error occurs
+                originalParent.appendChild(draggedCard);
+                updateLanesCounters();
+                console.error(err);
+                if (window.Components) {
+                    window.Components.showToast('Network error while saving stage change.', 'error');
+                }
+            }
+        });
+    });
+
+    function updateLanesCounters() {
+        document.querySelectorAll('.kanban-col-lane').forEach(lane => {
+            const wrapper = lane.querySelector('.kanban-cards-wrapper');
+            const badge = lane.querySelector('.kanban-lane-badge');
+            if (wrapper && badge) {
+                badge.textContent = wrapper.children.length;
+            }
+        });
+    }
+});
+</script>
+
+<style>
+/* Additional dashboard elements styling rules */
+.crm-dashboard-layout {
+    font-family: var(--font-body);
+}
+
+.crm-console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.view-toggle-bar {
+    display: inline-flex;
+    background-color: var(--color-light-gray);
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.view-toggle-btn {
+    border: none;
+    background: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-nav);
+    font-weight: 600;
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.view-toggle-btn--active {
+    background-color: var(--color-surface);
+    color: var(--color-text-title);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+/* KPI Cards styling */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.kpi-card {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid transparent;
+    border-top: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.kpi-card--inquiry { border-left-color: var(--color-primary); }
+.kpi-card--followup { border-left-color: var(--color-warning); }
+.kpi-card--pending { border-left-color: #ec4899; }
+.kpi-card--enrolled { border-left-color: var(--color-success); }
+
+.kpi-card__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.kpi-card__label {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.kpi-card__value {
+    font-size: var(--font-size-h3);
+    font-weight: 800;
+    color: var(--color-text-title);
+    margin: 4px 0;
+}
+
+.kpi-card__trend {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+}
+
+.kpi-card__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.kpi-card__icon.bg-blue { background-color: rgba(40, 55, 120, 0.1); color: var(--color-primary); }
+.kpi-card__icon.bg-orange { background-color: rgba(245, 158, 11, 0.1); color: var(--color-warning); }
+.kpi-card__icon.bg-pink { background-color: rgba(236, 72, 153, 0.1); color: #ec4899; }
+.kpi-card__icon.bg-green { background-color: rgba(16, 185, 129, 0.1); color: var(--color-success); }
+
+:root[data-theme="dark"] .kpi-card__icon.bg-blue {
+    background-color: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+}
+
+/* Dynamic filters */
+.search-filter-section {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.filter-form__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;
+    gap: var(--spacing-md);
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-label {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    color: var(--color-text-title);
+}
+
+.filter-control {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: var(--font-size-small);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.filter-control:focus {
+    outline: none;
+    border-color: var(--color-text-title);
+}
+
+.filter-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+}
+
+/* Kanban Horizontal lanes styling */
+.kanban-scroller {
+    overflow-x: auto;
+    padding-bottom: var(--spacing-lg);
+}
+
+.kanban-lane-container {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.kanban-col-lane {
+    background-color: var(--color-light-gray);
+    border-radius: var(--radius-md);
+    width: 290px;
+    flex-shrink: 0;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.kanban-lane-header {
+    padding: var(--spacing-md);
+    background-color: var(--color-surface);
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 4px solid transparent;
+}
+
+.kanban-lane-title {
+    font-family: var(--font-nav);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-text-title);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kanban-lane-badge {
+    background-color: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+
+.kanban-cards-wrapper {
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    overflow-y: auto;
+    flex: 1;
+    min-height: 350px;
+}
+
+/* Kanban Cards items styling */
+.kanban-student-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    cursor: grab;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.kanban-student-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-light);
+}
+
+.kanban-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+}
+
+.temp-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+}
+
+.card-id-text {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+}
+
+.kanban-card-name {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-xs);
+}
+
+.kanban-card-details {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.kanban-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-xs);
+    font-size: 0.75rem;
+}
+
+.card-adviser-pill {
+    color: var(--color-text-title);
+    font-weight: 600;
+}
+
+.interaction-pill {
+    color: var(--color-text-muted);
+}
+
+/* Inquiry Directory table layouts */
+.crm-table-container {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+    overflow-x: auto;
+}
+
+.directory-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-small);
+}
+
+.directory-table th {
+    background-color: var(--color-light-gray);
+    color: var(--color-text-title);
+    font-weight: 700;
+    text-align: left;
+    padding: var(--spacing-md);
+    border-bottom: 2px solid var(--color-border);
+    font-family: var(--font-nav);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.directory-table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    vertical-align: middle;
+}
+
+.directory-table tr:hover {
+    background-color: var(--color-surface-hover);
+}
+
+.student-profile-cell {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.profile-avatar-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background-color: rgba(40, 55, 120, 0.1);
+    color: var(--color-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    border: 1.5px solid var(--color-border);
+}
+
+.student-cell-name {
+    font-weight: 700;
+    color: var(--color-text-title);
+}
+
+.student-cell-email {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.program-badge {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--color-text-title);
+    font-size: 0.8rem;
+}
+
+.stage-tag {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+}
+
+/* Sidebar Leaderboard cards styling */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.sidebar-stats-card {
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.stats-card-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: var(--spacing-xs);
+}
+
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.stats-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--spacing-xs);
+}
+
+.stats-item span {
+    font-weight: 600;
+    color: var(--color-text-title);
+}
+
+.badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+}
+.badge--primary { background-color: rgba(40, 55, 120, 0.1); color: var(--color-primary); }
+.badge--secondary { background-color: rgba(139, 0, 0, 0.1); color: var(--color-secondary); }
+
+.stats-item-details {
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.upcoming-prog-name {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+}
+
+.upcoming-prog-meta {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+}
+</style>
             </main>
             
         </div>
     </div>
 
     <!-- Scripts Loader -->
-    <script defer src="../../../assets/dist/app.min.js?v=1785836141707"></script>    <script>
+    <script defer src="scratch/assets/dist/app.min.js?v=0bb0f098"></script>    <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('adminSidebar');
             if (sidebar) {
