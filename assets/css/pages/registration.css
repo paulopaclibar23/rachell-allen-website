@@ -19,6 +19,9 @@
     padding: var(--spacing-xl);
     text-align: center;
     border-bottom: 4px solid #D97706;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 .register-header h2 {
@@ -26,6 +29,7 @@
     font-size: var(--font-size-h2);
     font-weight: 800;
     margin-bottom: 8px;
+    background: transparent !important;
 }
 
 .register-header p {
@@ -33,10 +37,23 @@
     font-size: var(--font-size-body);
     font-weight: 600;
     margin: 0;
+    background: transparent !important;
 }
 
-.register-header ::selection,
-.register-header *::selection {
+.register-header h2::selection {
+    background-color: #D97706 !important;
+    color: #ffffff !important;
+}
+.register-header h2::-moz-selection {
+    background-color: #D97706 !important;
+    color: #ffffff !important;
+}
+
+.register-header p::selection {
+    background-color: #D97706 !important;
+    color: #ffffff !important;
+}
+.register-header p::-moz-selection {
     background-color: #D97706 !important;
     color: #ffffff !important;
 }
@@ -125,44 +142,11 @@
     display: block;
 }
 
+/* Wizard Actions */
 .wizard-actions {
     display: flex;
     justify-content: space-between;
     margin-top: var(--spacing-xl);
-    border-top: 1px solid var(--color-border);
     padding-top: var(--spacing-lg);
-}
-
-/* Summary Box in step review */
-.review-summary {
-    background-color: var(--color-bg);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-lg);
-    border: 1px solid var(--color-border);
-}
-
-.review-summary__title {
-    font-size: var(--font-size-body);
-    font-weight: 700;
-    color: var(--color-text-title);
-    margin-bottom: var(--spacing-sm);
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: var(--spacing-xs);
-}
-
-.review-summary__item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--spacing-xs);
-    font-size: var(--font-size-small);
-}
-
-.review-summary__label {
-    font-weight: 600;
-    color: var(--color-text);
-}
-
-.review-summary__value {
-    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
 }
