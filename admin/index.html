@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('admin_theme') || localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-dark');
+            }
+            
+            // Sidebar collapse state initialization
+            const sidebarCollapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            if (sidebarCollapsed && window.innerWidth >= 1024) {
+                document.write('<style>.admin-sidebar { width: 70px !important; } .admin-header-bar { left: 70px !important; } .admin-main-wrapper { margin-left: 70px !important; } .admin-sidebar__logo span, .admin-sidebar__menu-label, .admin-sidebar__link span:not(.admin-sidebar__link-icon), .admin-sidebar__footer { display: none !important; } .admin-sidebar__logo-area { justify-content: center !important; } .admin-sidebar__link-content { justify-content: center !important; gap: 0 !important; } .admin-sidebar__link-icon { margin-right: 0 !important; font-size: 1.25rem !important; }</style>');
+            }
+        })();
+    </script>
+    <title>Admin Dashboard Overview - Rachell Allen</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/dist/app.min.css?v=1785830305204"></head>
+<body>
+    <div class="admin-layout-container">
+        
+        <!-- ================= FIXED LEFT SIDEBAR ================= -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar__logo-area">
+                <a href="../admin/index.html" class="admin-sidebar__logo">
+                    <img src="../assets/img/ra-logo2.png" alt="Rachell Allen Logo">
+                    <span>Admissions Console</span>
+                </a>
+                <button class="admin-mobile-toggle" onclick="toggleSidebar()" style="color: var(--color-white); font-size: 1.1rem; padding: 2px 6px;">✕</button>
+            </div>
+            
+            <nav class="admin-sidebar__menu">
+                <div class="admin-sidebar__menu-label">Analytics & CRM</div>
+                
+                <a href="../admin/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">📊</span>
+                        <span>Console Dashboard</span>
+                    </div>
+                </a>
+                
+                <a href="../admin/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">⚡</span>
+                        <span>Admissions Pipeline</span>
+                    </div>
+                </a>
+                
+                <div class="admin-sidebar__menu-label">Academic Offerings</div>
+                
+                <a href="../admin/programs/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">🎓</span>
+                        <span>Review Programs</span>
+                    </div>
+                </a>
+                
+                <a href="../admin/schedules/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">📅</span>
+                        <span>Class Schedules</span>
+                    </div>
+                </a>
+                
+                <div class="admin-sidebar__menu-label">Content & CMS</div>
+                
+                <a href="/admin/blog" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">📰</span>
+                        <span>Blog Articles</span>
+                    </div>
+                </a>
+                
+                <a href="/admin/faq" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">❔</span>
+                        <span>FAQ Directory</span>
+                    </div>
+                </a>
+                
+                <a href="/admin/testimonials" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">💬</span>
+                        <span>Success Stories</span>
+                    </div>
+                </a>
+                
+                <div class="admin-sidebar__menu-label">System Utilities</div>
+                
+                <a href="/admin/emails" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">✉️</span>
+                        <span>Email Queue Logs</span>
+                    </div>
+                </a>
+                
+                <a href="/admin/audit" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">🛡️</span>
+                        <span>Security Audits</span>
+                    </div>
+                </a>
+                
+                <a href="../admin/users/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">👥</span>
+                        <span>User Directories</span>
+                    </div>
+                </a>
+                
+                <a href="../admin/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">⚙️</span>
+                        <span>Global Settings</span>
+                    </div>
+                </a>
+            </nav>
+            
+            <div class="admin-sidebar__footer">
+                <span>Rachell Allen Admin v1.2</span>
+            </div>
+        </aside>
+        
+        <!-- ================= MAIN WRAPPER CONTAINER ================= -->
+        <div class="admin-main-wrapper">
+            
+            <!-- ================= TOP HEADER BAR ================= -->
+            <header class="admin-header-bar">
+                <div class="d-flex align-center gap-3">
+                    <button class="admin-mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar Menu">☰</button>
+                    <button class="admin-desktop-collapse" onclick="toggleSidebarCollapse()" aria-label="Collapse Sidebar Menu" title="Collapse Sidebar Menu">☰</button>
+                    
+                    <!-- Search Utilities -->
+                    <div class="admin-header-bar__search">
+                        <span class="admin-header-bar__search-icon">🔍</span>
+                        <input type="text" placeholder="Global search console..." class="admin-header-bar__search-input" aria-label="Search">
+                    </div>
+                </div>
+                
+                <!-- Header Utility Actions -->
+                <div class="admin-header-bar__actions">
+                    
+                    <!-- Dark/Light Theme toggler -->
+                    <button class="header-utility-btn" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Theme Toggle">
+                        🌓
+                    </button>
+                    
+                    <!-- Notifications -->
+                    <div class="header-utility-btn" style="position: relative; cursor: pointer;" title="System notifications">
+                        🔔
+                        <span style="position: absolute; top: 2px; right: 2px; background-color: var(--color-secondary); color: white; border-radius: var(--radius-full); width: 8px; height: 8px;"></span>
+                    </div>
+                    
+                    <span style="width: 1px; height: 24px; background-color: var(--color-border); margin: 0 4px;"></span>
+                    
+                    <!-- Profile metadata dropdown -->
+                    <a href="../admin/users/index.html" class="admin-header-bar__profile">
+                        <div class="admin-header-bar__avatar">
+                            SA                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="admin-header-bar__name">Super Admin</span>
+                            <span class="admin-header-bar__role">Super Admin</span>
+                        </div>
+                    </a>
+                    
+                    <a href="../login/index.html" class="btn btn--outline btn--sm" style="padding: 8px 12px; font-size: 0.85em; font-weight: 600;">Sign Out</a>
+                </div>
+            </header>
+            
+            <!-- ================= DYNAMIC MAIN PAGE CONTENT ================= -->
+            <main class="admin-main-content" id="main-content">
+                <div class="workspace-page">
+    <div class="workspace-header d-flex justify-between align-center mb-5">
+        <div>
+            <h2 class="workspace-title m-0">Admissions Dashboard Overview</h2>
+            <p class="text-muted m-0">Real-time indicators, pipeline conversion analytics, and enrollment statistics</p>
+        </div>
+
+        <!-- Date Range Filter & Force Refresh Controls -->
+        <div class="d-flex align-center gap-3">
+            <form method="GET" action="/admin/dashboard" id="dashboardRangeForm" class="d-flex align-center gap-2 m-0">
+                <label for="range" class="form-label m-0"
+                    style="font-size: var(--font-size-xs); white-space: nowrap; font-weight: 600; color: var(--color-primary);">Filter
+                    Period:</label>
+                <select name="range" id="range" onchange="document.getElementById('dashboardRangeForm').submit()"
+                    class="form-control"
+                    style="padding: 6px 12px; height: 38px; width: 160px; font-size: var(--font-size-small);">
+                    <option value="today" 
+Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 17
+>Today</option>
+                    <option value="week" 
+Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 18
+>Last 7 Days</option>
+                    <option value="month" 
+Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 19
+>Last 30 Days</option>
+                    <option value="quarter" 
+Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 20
+>Last 90 Days</option>
+                    <option value="year" 
+Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 21
+>Last 365 Days</option>
+                </select>
+            </form>
+            <a href="/admin/dashboard?range=
+Warning: Undefined variable $range in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 24
+&refresh=1"
+                class="btn btn--secondary d-flex align-center gap-2"
+                style="padding: 6px 14px; height: 38px; font-size: var(--font-size-small); font-weight: 600;">
+                🔄 Refresh Cache
+            </a>
+        </div>
+    </div>
+
+    <!-- Cache status bar -->
+    
+    <!-- KPI Widgets Section -->
+    <div class="kpi-grid mb-5">
+
+        <!-- Total Inquiries Widget -->
+        <div class="kpi-card-dashboard"
+            style="background: linear-gradient(135deg, #283778 0%, #1c2759 100%); color: var(--color-white);">
+            <div class="d-flex justify-between align-start">
+                <div>
+                    <span class="kpi-card-dashboard__label" style="color: rgba(255,255,255,0.75);">Total Leads</span>
+                    <h3 class="kpi-card-dashboard__value" style="color: var(--color-white);">
+                        148</h3>
+                </div>
+                <span class="kpi-card-dashboard__icon" style="background-color: rgba(255,255,255,0.1);">👥</span>
+            </div>
+            <div class="kpi-card-dashboard__footer"
+                style="color: rgba(255,255,255,0.7); font-size: var(--font-size-xs);">
+                Total inquiries registered in platform
+            </div>
+        </div>
+
+        <!-- Active Inquiries Widget -->
+        <div class="kpi-card-dashboard" style="border-left: 4px solid var(--color-secondary);">
+            <div class="d-flex justify-between align-start">
+                <div>
+                    <span class="kpi-card-dashboard__label">Active Inquiries</span>
+                    <h3 class="kpi-card-dashboard__value">32</h3>
+                </div>
+                <span class="kpi-card-dashboard__icon"
+                    style="background-color: rgba(40, 55, 120, 0.05); color: var(--color-primary);">💬</span>
+            </div>
+            <div class="kpi-card-dashboard__footer">
+                Ongoing counselor follow-ups
+            </div>
+        </div>
+
+        <!-- Enrolled Students Widget -->
+        <div class="kpi-card-dashboard" style="border-left: 4px solid #10b981;">
+            <div class="d-flex justify-between align-start">
+                <div>
+                    <span class="kpi-card-dashboard__label">Enrolled Students</span>
+                    <h3 class="kpi-card-dashboard__value" style="color: #10b981;">
+                        86</h3>
+                </div>
+                <span class="kpi-card-dashboard__icon"
+                    style="background-color: rgba(16, 185, 129, 0.05); color: #10b981;">🎓</span>
+            </div>
+            <div class="kpi-card-dashboard__footer">
+                Verified review registrations
+            </div>
+        </div>
+
+        <!-- Pending Payments Widget -->
+        <div class="kpi-card-dashboard" style="border-left: 4px solid #f59e0b;">
+            <div class="d-flex justify-between align-start">
+                <div>
+                    <span class="kpi-card-dashboard__label">Pending Payments</span>
+                    <h3 class="kpi-card-dashboard__value" style="color: #f59e0b;">
+                        
+Warning: Undefined array key "pending_payments" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 98
+</h3>
+                </div>
+                <span class="kpi-card-dashboard__icon"
+                    style="background-color: rgba(245, 158, 11, 0.05); color: #f59e0b;">💳</span>
+            </div>
+            <div class="kpi-card-dashboard__footer">
+                Awaiting receipt uploads
+            </div>
+        </div>
+
+        <!-- Revenue Summary Widget -->
+        <div class="kpi-card-dashboard" style="border-left: 4px solid var(--color-primary);">
+            <div class="d-flex justify-between align-start">
+                <div>
+                    <span class="kpi-card-dashboard__label">Revenue Summary</span>
+                    <h3 class="kpi-card-dashboard__value">₱
+Warning: Undefined array key "revenue_summary" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 113
+0.00                    </h3>
+                </div>
+                <span class="kpi-card-dashboard__icon"
+                    style="background-color: rgba(40, 55, 120, 0.05); color: var(--color-primary);">💰</span>
+            </div>
+            <div class="kpi-card-dashboard__footer">
+                Verified collections in PHP
+            </div>
+        </div>
+
+        <!-- Conversion Rate Widget -->
+        <div class="kpi-card-dashboard" style="border-left: 4px solid #8b5cf6;">
+            <div class="d-flex justify-between align-start">
+                <div>
+                    <span class="kpi-card-dashboard__label">Admissions Rate</span>
+                    <h3 class="kpi-card-dashboard__value" style="color: #8b5cf6;">
+                        
+Warning: Undefined array key "conversion_rate_percent" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 130
+%</h3>
+                </div>
+                <span class="kpi-card-dashboard__icon"
+                    style="background-color: rgba(139, 92, 246, 0.05); color: #8b5cf6;">📈</span>
+            </div>
+            <div class="kpi-card-dashboard__footer">
+                Leads converted to active students
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Details Analytical Grid -->
+    <div class="analytics-grid">
+
+        <!-- Pipeline Distribution -->
+        <div class="analytics-card">
+            <h3 class="analytics-card__title">Pipeline Stage Distribution</h3>
+            <div style="overflow-x: auto;">
+                <table class="analytics-table">
+                    <thead>
+                        <tr>
+                            <th>Stage Name</th>
+                            <th style="text-align: right;">Lead Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+Warning: Undefined array key "pipeline_distribution" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 157
+
+Warning: foreach() argument must be of type array|object, null given in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 157
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Course Performance -->
+        <div class="analytics-card">
+            <h3 class="analytics-card__title">Leads per Program</h3>
+            <div style="overflow-x: auto;">
+                <table class="analytics-table">
+                    <thead>
+                        <tr>
+                            <th>Program Course</th>
+                            <th style="text-align: right;">Registrations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                                    <tr>
+                                <td colspan="2"
+                                    style="text-align: center; color: var(--color-text-muted); font-style: italic; padding: var(--spacing-lg);">
+                                    No registration data recorded in this period.</td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Country Distribution -->
+        <div class="analytics-card">
+            <h3 class="analytics-card__title">Leads per Country</h3>
+            <div style="overflow-x: auto;">
+                <table class="analytics-table">
+                    <thead>
+                        <tr>
+                            <th>Country Code</th>
+                            <th style="text-align: right;">Leads Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                                    <tr>
+                                <td colspan="2"
+                                    style="text-align: center; color: var(--color-text-muted); font-style: italic; padding: var(--spacing-lg);">
+                                    No lead locations captured.</td>
+                            </tr>
+                                            </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Email Statistics -->
+        <div class="analytics-card">
+            <h3 class="analytics-card__title">Outbound Email Logs Overview</h3>
+            <div style="padding: var(--spacing-sm) 0;">
+                <div class="email-stat-item d-flex justify-between align-center mb-3">
+                    <span class="text-muted font-weight-500">Emails Delivered:</span>
+                    <strong class="color-success"
+                        style="color: #10b981; font-size: 1.1rem;">
+Warning: Undefined array key "email_delivered" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 246
+</strong>
+                </div>
+                <div class="email-stat-item d-flex justify-between align-center mb-3">
+                    <span class="text-muted font-weight-500">Delivery Bounces:</span>
+                    <strong class="color-danger"
+                        style="color: #ef4444; font-size: 1.1rem;">
+Warning: Undefined array key "email_bounced" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 251
+</strong>
+                </div>
+
+                
+Warning: Undefined array key "email_delivered" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 255
+
+Warning: Undefined array key "email_bounced" in C:\Users\paulo\.gemini\antigravity-ide\scratch\rachell-allen-ssd\src\Modules\Dashboard\Views\index.php on line 255
+                <div
+                    style="border-top: 1px solid var(--color-border); padding-top: var(--spacing-md); margin-top: var(--spacing-md);">
+                    <div class="d-flex justify-between align-center mb-2">
+                        <span class="font-weight-600" style="color: var(--color-primary);">Deliverability Rate:</span>
+                        <strong
+                            style="color: var(--color-primary); font-size: 1.2rem;">100%</strong>
+                    </div>
+                    <div class="progress-bar-bg"
+                        style="width: 100%; height: 8px; background-color: rgba(40, 55, 120, 0.08); border-radius: var(--radius-full); overflow: hidden;">
+                        <div class="progress-bar-fill"
+                            style="width: 100%; height: 100%; background-color: #10b981;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .kpi-card-dashboard {
+        background-color: var(--color-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-sm);
+        padding: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 140px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .kpi-card-dashboard:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .kpi-card-dashboard__label {
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--color-text-muted);
+        display: block;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .kpi-card-dashboard__value {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        color: var(--color-text-title);
+        line-height: 1.1;
+    }
+
+    .kpi-card-dashboard__icon {
+        width: 42px;
+        height: 42px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+    }
+
+    .kpi-card-dashboard__footer {
+        font-size: var(--font-size-xs);
+        color: var(--color-text-muted);
+        margin-top: var(--spacing-md);
+        border-top: 1px solid var(--color-border);
+        padding-top: var(--spacing-sm);
+    }
+
+    .analytics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--spacing-lg);
+    }
+
+    @media (max-width: 767px) {
+        .analytics-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .analytics-card {
+        background-color: var(--color-surface);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-sm);
+        padding: var(--spacing-xl);
+    }
+
+    .analytics-card__title {
+        font-family: var(--font-heading);
+        font-size: 1.15rem;
+        color: var(--color-text-title);
+        margin: 0 0 var(--spacing-lg) 0;
+        border-bottom: 2px solid var(--color-border);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .analytics-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .analytics-table th {
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--color-text-muted);
+        border-bottom: 1px solid var(--color-border);
+        padding: var(--spacing-sm) var(--spacing-xs);
+    }
+
+    .analytics-table td {
+        padding: var(--spacing-md) var(--spacing-xs);
+        border-bottom: 1px solid var(--color-border);
+        color: var(--color-text);
+    }
+
+    .analytics-table tr:last-child td {
+        border-bottom: none;
+    }
+</style>            </main>
+            
+        </div>
+    </div>
+
+    <!-- Scripts Loader -->
+    <script defer src="../assets/dist/app.min.js?v=1785830305204"></script>    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('adminSidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('admin-sidebar--open');
+            }
+        }
+
+        function toggleSidebarCollapse() {
+            const container = document.querySelector('.admin-layout-container');
+            if (container) {
+                const isCollapsed = container.classList.toggle('admin-layout-container--collapsed');
+                localStorage.setItem('sidebar-collapsed', isCollapsed ? 'true' : 'false');
+            }
+        }
+    </script>
+</body>
+</html>

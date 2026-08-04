@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('admin_theme') || localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('theme-dark');
+            }
+            
+            // Sidebar collapse state initialization
+            const sidebarCollapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            if (sidebarCollapsed && window.innerWidth >= 1024) {
+                document.write('<style>.admin-sidebar { width: 70px !important; } .admin-header-bar { left: 70px !important; } .admin-main-wrapper { margin-left: 70px !important; } .admin-sidebar__logo span, .admin-sidebar__menu-label, .admin-sidebar__link span:not(.admin-sidebar__link-icon), .admin-sidebar__footer { display: none !important; } .admin-sidebar__logo-area { justify-content: center !important; } .admin-sidebar__link-content { justify-content: center !important; gap: 0 !important; } .admin-sidebar__link-icon { margin-right: 0 !important; font-size: 1.25rem !important; }</style>');
+            }
+        })();
+    </script>
+    <title>Manage Administrator Users - Rachell Allen Admin</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../assets/dist/app.min.css?v=1785830305204"></head>
+<body>
+    <div class="admin-layout-container">
+        
+        <!-- ================= FIXED LEFT SIDEBAR ================= -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-sidebar__logo-area">
+                <a href="../../admin/index.html" class="admin-sidebar__logo">
+                    <img src="../../assets/img/ra-logo2.png" alt="Rachell Allen Logo">
+                    <span>Admissions Console</span>
+                </a>
+                <button class="admin-mobile-toggle" onclick="toggleSidebar()" style="color: var(--color-white); font-size: 1.1rem; padding: 2px 6px;">✕</button>
+            </div>
+            
+            <nav class="admin-sidebar__menu">
+                <div class="admin-sidebar__menu-label">Analytics & CRM</div>
+                
+                <a href="../../admin/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">📊</span>
+                        <span>Console Dashboard</span>
+                    </div>
+                </a>
+                
+                <a href="../../admin/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">⚡</span>
+                        <span>Admissions Pipeline</span>
+                    </div>
+                </a>
+                
+                <div class="admin-sidebar__menu-label">Academic Offerings</div>
+                
+                <a href="../../admin/programs/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">🎓</span>
+                        <span>Review Programs</span>
+                    </div>
+                </a>
+                
+                <a href="../../admin/schedules/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">📅</span>
+                        <span>Class Schedules</span>
+                    </div>
+                </a>
+                
+                <div class="admin-sidebar__menu-label">Content & CMS</div>
+                
+                <a href="/admin/blog" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">📰</span>
+                        <span>Blog Articles</span>
+                    </div>
+                </a>
+                
+                <a href="/admin/faq" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">❔</span>
+                        <span>FAQ Directory</span>
+                    </div>
+                </a>
+                
+                <a href="/admin/testimonials" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">💬</span>
+                        <span>Success Stories</span>
+                    </div>
+                </a>
+                
+                <div class="admin-sidebar__menu-label">System Utilities</div>
+                
+                <a href="/admin/emails" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">✉️</span>
+                        <span>Email Queue Logs</span>
+                    </div>
+                </a>
+                
+                <a href="/admin/audit" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">🛡️</span>
+                        <span>Security Audits</span>
+                    </div>
+                </a>
+                
+                <a href="../../admin/users/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">👥</span>
+                        <span>User Directories</span>
+                    </div>
+                </a>
+                
+                <a href="../../admin/index.html" class="admin-sidebar__link ">
+                    <div class="admin-sidebar__link-content">
+                        <span class="admin-sidebar__link-icon">⚙️</span>
+                        <span>Global Settings</span>
+                    </div>
+                </a>
+            </nav>
+            
+            <div class="admin-sidebar__footer">
+                <span>Rachell Allen Admin v1.2</span>
+            </div>
+        </aside>
+        
+        <!-- ================= MAIN WRAPPER CONTAINER ================= -->
+        <div class="admin-main-wrapper">
+            
+            <!-- ================= TOP HEADER BAR ================= -->
+            <header class="admin-header-bar">
+                <div class="d-flex align-center gap-3">
+                    <button class="admin-mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar Menu">☰</button>
+                    <button class="admin-desktop-collapse" onclick="toggleSidebarCollapse()" aria-label="Collapse Sidebar Menu" title="Collapse Sidebar Menu">☰</button>
+                    
+                    <!-- Search Utilities -->
+                    <div class="admin-header-bar__search">
+                        <span class="admin-header-bar__search-icon">🔍</span>
+                        <input type="text" placeholder="Global search console..." class="admin-header-bar__search-input" aria-label="Search">
+                    </div>
+                </div>
+                
+                <!-- Header Utility Actions -->
+                <div class="admin-header-bar__actions">
+                    
+                    <!-- Dark/Light Theme toggler -->
+                    <button class="header-utility-btn" id="themeToggle" title="Toggle Light/Dark Theme" aria-label="Theme Toggle">
+                        🌓
+                    </button>
+                    
+                    <!-- Notifications -->
+                    <div class="header-utility-btn" style="position: relative; cursor: pointer;" title="System notifications">
+                        🔔
+                        <span style="position: absolute; top: 2px; right: 2px; background-color: var(--color-secondary); color: white; border-radius: var(--radius-full); width: 8px; height: 8px;"></span>
+                    </div>
+                    
+                    <span style="width: 1px; height: 24px; background-color: var(--color-border); margin: 0 4px;"></span>
+                    
+                    <!-- Profile metadata dropdown -->
+                    <a href="../../admin/users/index.html" class="admin-header-bar__profile">
+                        <div class="admin-header-bar__avatar">
+                            SA                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <span class="admin-header-bar__name">Super Admin</span>
+                            <span class="admin-header-bar__role">Super Admin</span>
+                        </div>
+                    </a>
+                    
+                    <a href="../../login/index.html" class="btn btn--outline btn--sm" style="padding: 8px 12px; font-size: 0.85em; font-weight: 600;">Sign Out</a>
+                </div>
+            </header>
+            
+            <!-- ================= DYNAMIC MAIN PAGE CONTENT ================= -->
+            <main class="admin-main-content" id="main-content">
+                <div class="workspace-page">
+    <div class="workspace-header mb-5 d-flex justify-between align-center flex-wrap gap-3">
+        <div>
+            <h2 class="workspace-title">User Management</h2>
+            <p class="text-muted">Manage system administrators, counselors, instructors, and student accounts</p>
+        </div>
+        <a href="/admin/users/create" class="btn btn--primary">Create New User</a>
+    </div>
+    
+    <!-- Alerts Feed -->
+        
+    <!-- Search/Filter form -->
+    <div class="crm-filters mb-4">
+        <form method="GET" action="/admin/users" class="d-flex flex-wrap gap-3 align-end w-100">
+            <div class="form-group m-0" style="flex: 1; min-width: 250px;">
+                <input type="text" name="search" class="form-control" placeholder="Search by name or email..." value="">
+            </div>
+            <button type="submit" class="btn btn--secondary">Search Filter</button>
+        </form>
+    </div>
+
+    <!-- Responsive Table -->
+    <div class="table-responsive">
+        <table class="directory-table">
+            <thead>
+                <tr>
+                    <th style="width: 80px;">ID</th>
+                    <th>Email Address</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th style="width: 140px; text-align: center;">Status</th>
+                    <th style="width: 180px; text-align: right;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">13</td>
+                            <td><strong>chyles@rachellallen.com</strong></td>
+                            <td>Mary Chyles</td>
+                            <td>Bautista</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/13" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/13" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">12</td>
+                            <td><strong>dashboard_tester_b3596f45@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/12" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/12" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">11</td>
+                            <td><strong>dashboard_tester_55234aed@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/11" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/11" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">10</td>
+                            <td><strong>dashboard_tester_99105c6f@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/10" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/10" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">9</td>
+                            <td><strong>dashboard_tester_89c0df05@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/9" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/9" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">8</td>
+                            <td><strong>dashboard_tester_7acfb863@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/8" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/8" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">7</td>
+                            <td><strong>dashboard_tester_dd6f912e@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/7" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/7" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">6</td>
+                            <td><strong>dashboard_tester_b96d6961@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/6" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/6" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">5</td>
+                            <td><strong>dashboard_tester_24de4a43@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/5" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/5" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">4</td>
+                            <td><strong>dashboard_tester_4c59918c@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/4" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/4" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">3</td>
+                            <td><strong>dashboard_tester_181b43e5@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/3" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/3" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">2</td>
+                            <td><strong>dashboard_tester_af3602e1@test.com</strong></td>
+                            <td>DashboardUpdated</td>
+                            <td>Tester</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/2" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/2" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                            <tr>
+                            <td style="color: var(--color-text-muted); font-family: monospace; font-size: 0.9em;">1</td>
+                            <td><strong>admin@rachellallen.com</strong></td>
+                            <td>Super</td>
+                            <td>Admin</td>
+                            <td style="text-align: center;">
+                                <span class="temp-badge" style="
+                                    display: inline-block;
+                                    padding: 4px 8px;
+                                    border-radius: var(--radius-sm);
+                                    font-size: var(--font-size-xs);
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    background-color: rgba(16, 185, 129, 0.15);
+                                    color: var(--color-success);
+                                ">
+                                    active                                </span>
+                            </td>
+                            <td style="text-align: right;">
+                                <div class="d-flex gap-2 justify-end">
+                                    <a href="/admin/users/edit/1" class="btn btn--outline" style="padding: 4px 8px; font-size: var(--font-size-xs);">Edit</a>
+                                    <a href="/admin/users/delete/1" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn--ghost" style="padding: 4px 8px; font-size: var(--font-size-xs); color: var(--color-error);">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                                                </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    </div>
+            </main>
+            
+        </div>
+    </div>
+
+    <!-- Scripts Loader -->
+    <script defer src="../../assets/dist/app.min.js?v=1785830305204"></script>    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('adminSidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('admin-sidebar--open');
+            }
+        }
+
+        function toggleSidebarCollapse() {
+            const container = document.querySelector('.admin-layout-container');
+            if (container) {
+                const isCollapsed = container.classList.toggle('admin-layout-container--collapsed');
+                localStorage.setItem('sidebar-collapsed', isCollapsed ? 'true' : 'false');
+            }
+        }
+    </script>
+</body>
+</html>

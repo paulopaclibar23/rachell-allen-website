@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="1995342cf9640db4377f977df4064b2ea08f45c35179511ff9b95f65c204f77d">
+    <meta name="csrf-token" content="5133909774d7e7a00a77a8f125fe66def7ed6b288086c1acb22bfac66b353582">
     <script>
         (function() {
             // Theme toggling is restricted to Admin side. Public website strictly uses Light theme.
@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../assets/dist/app.min.css?v=1785829462840"></head>
+    <link rel="stylesheet" href="../assets/dist/app.min.css?v=1785830305204"></head>
 <body>
     <!-- Accessibility Skip Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -85,7 +85,7 @@
 
             <!-- Form Wrapper -->
             <form id="wizardForm" action="/api/register" method="POST" enctype="multipart/form-data" novalidate>
-                <input type="hidden" name="csrf_token" value="1995342cf9640db4377f977df4064b2ea08f45c35179511ff9b95f65c204f77d">
+                <input type="hidden" name="csrf_token" value="5133909774d7e7a00a77a8f125fe66def7ed6b288086c1acb22bfac66b353582">
 
                 <!-- STEP 1: Personal Information -->
                 <div class="wizard-step wizard-step--active" data-step="1">
@@ -156,17 +156,13 @@
                         <label class="form-label form-label--required">Select Available Cohort Run</label>
                         <select name="schedule_id" id="scheduleSelect" required class="form-control" disabled>
                             <option value="">Select a schedule...</option>
-                                                            <option value="6" data-course="17">
-                                    Taft Avenue Manila Branch 
+                                                            <option value="10" data-course="18">
+                                    Makati City Main Branch 
                                     (Starts: Aug 10, 2026)
                                 </option>
-                                                            <option value="7" data-course="18">
-                                    Makati City Main Branch 
-                                    (Starts: Aug 17, 2026)
-                                </option>
-                                                            <option value="8" data-course="19">
+                                                            <option value="11" data-course="19">
                                     Online Live Webinar Run 
-                                    (Starts: Aug 17, 2026)
+                                    (Starts: Aug 15, 2026)
                                 </option>
                                                     </select>
                     </div>
@@ -626,5 +622,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </footer>
 
     <!-- Global Scripts -->
-    <script defer src="../assets/dist/app.min.js?v=1785829462840"></script></body>
+    <script defer src="../assets/dist/app.min.js?v=1785830305204"></script></body>
 </html>

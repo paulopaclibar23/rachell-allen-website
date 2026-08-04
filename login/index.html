@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="986ac35477ac7265d5447c85dda378b64c49411c9e756df66bc2f40989990702">
+    <meta name="csrf-token" content="458d4eb1295a97b8bf6550ef0209f5d940619fc8fc5a1fa1b13eea74acee638a">
     <script>
         (function() {
             // Theme toggling is restricted to Admin side. Public website strictly uses Light theme.
@@ -12,7 +12,7 @@
         })();
     </script>
     <meta name="description" content="Sleek, high-converting prep portal for NCLEX-RN and NCLEX-PN. Modernized boot camps, live webinars, and CRM scheduling.">
-    <title>Rachell Allen Review Services</title>
+    <title>Sign In</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,52 +54,138 @@
 
     <!-- Main View Content Injection -->
     <main id="main-content">
-        <!-- Testimonials List Layout -->
-<script type="application/ld+json">{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "http://localhost:8000"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Student Reviews",
-            "item": "http://localhost:8000/testimonials"
-        }
-    ]
-}</script>
-<main id="testimonials-list-page">
-    <nav aria-label="Breadcrumb" class="breadcrumbs">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li>/</li>
-            <li aria-current="page">Student Reviews</li>
-        </ul>
-    </nav>
+        <div class="login-page-container">
+    <div class="login-card">
+        <div class="login-card__header">
+            <div class="brand-logo-container">
+                <img src="../assets/img/ra-logo2.png" alt="Rachell Allen Review Services" style="height: 48px; width: auto; object-fit: contain;">
+            </div>
+            <h2>Sign In</h2>
+            <p class="text-muted">Access your Admissions CRM Portal & Student Dashboard</p>
+        </div>
 
-    <header class="page-header">
-        <h1>Student Success Stories & Reviews</h1>
-        <p class="subtitle">Real feedback from candidate nurses who passed their licensure boards with Rachell Allen.</p>
-    </header>
+        
+        <form action="/login" method="POST" novalidate>
+            <input type="hidden" name="csrf_token" value="458d4eb1295a97b8bf6550ef0209f5d940619fc8fc5a1fa1b13eea74acee638a">
+            
+            <div class="form-group mb-4">
+                <label for="email" class="form-label form-label--required">Email Address</label>
+                <input type="email" id="email" name="email" required class="form-control" placeholder="jane.smith@example.com">
+            </div>
 
-    <section id="testimonials-search-section" aria-label="Search Testimonials">
-        <form method="GET" action="/testimonials" class="search-form">
-            <label for="testimonial-search-input" class="sr-only">Search reviews</label>
-            <input type="text" id="testimonial-search-input" name="search" value="" placeholder="Search reviews by keyword...">
-            <button type="submit" class="primary-btn">Search Reviews</button>
-        </form>
-    </section>
+            <div class="form-group mb-4">
+                <div class="d-flex justify-between align-center mb-1">
+                    <label for="password" class="form-label form-label--required">Password</label>
+                    <a href="/password/reset" class="forgot-pass-link">Forgot password?</a>
+                </div>
+                <div class="password-toggle-wrapper">
+                    <input type="password" id="password" name="password" required class="form-control" placeholder="••••••••" style="padding-right: 42px;">
+                    <button type="button" id="togglePasswordBtn" class="password-toggle-btn" aria-label="Toggle password visibility">👁️</button>
+                </div>
+            </div>
 
-    <!-- Testimonials Listings -->
-    <section id="testimonials-grid-section" aria-label="Student Reviews Grid">
-                    <p class="no-records">No approved student reviews match your active query.</p>
-            </section>
-</main>
+            <div class="form-group mb-5">
+                <label class="form-check">
+                    <input type="checkbox" name="remember_me" class="form-check__input">
+                    <span class="form-check__label text-muted">Keep me signed in on this device</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full btn--lg">Sign In to Console</button>
+        <script>document.querySelector("form").addEventListener("submit", function(e) { e.preventDefault(); localStorage.setItem("admin_theme", "light"); window.location.href = "../admin/index.html"; });</script></form>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    
+    if (toggleBtn && passwordInput) {
+        toggleBtn.addEventListener('click', function() {
+            const isPassword = passwordInput.getAttribute('type') === 'password';
+            passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+            toggleBtn.textContent = isPassword ? '🙈' : '👁️';
+        });
+    }
+});
+</script>
+
+<style>
+.login-page-container {
+    max-width: 460px;
+    margin: 5rem auto;
+    padding: 0 var(--spacing-md);
+}
+
+.login-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+}
+
+.login-card__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.brand-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.login-card__header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-xs);
+}
+
+.forgot-pass-link {
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.forgot-pass-link:hover {
+    text-decoration: underline;
+}
+
+.password-toggle-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 4px;
+    color: var(--color-text-muted);
+    transition: color var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.password-toggle-btn:hover {
+    color: var(--color-text-title);
+}
+
+.password-toggle-btn:focus-visible {
+    box-shadow: var(--focus-ring);
+    border-radius: var(--radius-sm);
+}
+</style>
     </main>
 
     <!-- Footer Block -->
