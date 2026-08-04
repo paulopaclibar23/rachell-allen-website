@@ -10,6 +10,16 @@ html {
     text-size-adjust: 100%;
 }
 
+/* High contrast selection colors */
+::selection {
+    background-color: #D97706 !important;
+    color: #ffffff !important;
+}
+::-moz-selection {
+    background-color: #D97706 !important;
+    color: #ffffff !important;
+}
+
 body {
     font-family: var(--font-body);
     font-size: var(--font-size-body);

@@ -14,10 +14,31 @@
 }
 
 .register-header {
-    background-color: var(--color-primary);
+    background: linear-gradient(135deg, #283778 0%, #1e2a5c 100%);
     color: #ffffff;
     padding: var(--spacing-xl);
     text-align: center;
+    border-bottom: 4px solid #D97706;
+}
+
+.register-header h2 {
+    color: #ffffff !important;
+    font-size: var(--font-size-h2);
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.register-header p {
+    color: #FBBF24 !important;
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    margin: 0;
+}
+
+.register-header ::selection,
+.register-header *::selection {
+    background-color: #D97706 !important;
+    color: #ffffff !important;
 }
 
 .register-body {
