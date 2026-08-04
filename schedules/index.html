@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="7549588ee500c08f6110f40111e36e495e0e7b3ec8aea4cd5e66e0dd6f742be6">
+    <script>
+        (function() {
+            // Theme toggling is restricted to Admin side. Public website strictly uses Light theme.
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('theme-dark');
+        })();
+    </script>
+    <meta name="description" content="Sleek, high-converting prep portal for NCLEX-RN and NCLEX-PN. Modernized boot camps, live webinars, and CRM scheduling.">
+    <title>Rachell Allen Review Services</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/dist/app.min.css?v=ccb5cdf2"></head>
+<body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header Block -->
+    <header class="header">
+    <div class="header__container">
+        <a href="../index.html" class="header__logo" aria-label="Rachell Allen Home">
+            <img src="../assets/img/ra-logo2.png" alt="Rachell Allen Logo" class="header__logo-img" />
+        </a>
+        
+        <!-- Mobile hamburger toggle button -->
+        <button class="header__hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="header-navigation">
+            <span class="header__hamburger-bar"></span>
+            <span class="header__hamburger-bar"></span>
+            <span class="header__hamburger-bar"></span>
+        </button>
+
+        <nav class="header__nav" id="header-navigation" aria-label="Main Navigation">
+            <ul class="header__menu">
+                                    <li class="header__item"><a href="../nclex-application/index.html" class="header__link">NCLEX Application</a></li>
+                    <li class="header__item"><a href="../ielts/index.html" class="header__link">IELTS</a></li>
+                    <li class="header__item"><a href="/#testimonials-title" class="header__link">Success Stories</a></li>
+                    <li class="header__item"><a href="/#faq-title" class="header__link">FAQs</a></li>
+                    <li class="header__item"><a href="/#contact-cta-title" class="header__link">Contact Us</a></li>
+                    <li class="header__item"><a href="../student-portal/login/index.html" class="btn btn--primary">Student Portal Login</a></li>
+                            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Main View Content Injection -->
+    <main id="main-content">
+        <!-- Schedules List Layout -->
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "http://localhost:8000"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Class Schedules",
+            "item": "http://localhost:8000/schedules"
+        }
+    ]
+}</script>
+<main id="schedules-list-page">
+    <nav aria-label="Breadcrumb" class="breadcrumbs">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li>/</li>
+            <li aria-current="page">Class Schedules</li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Upcoming Review Schedules & Batches</h1>
+        <p class="subtitle">Filter and select the cohort that fits your timeline and learning style.</p>
+    </header>
+
+    <!-- Filter Form -->
+    <section id="schedules-filter-section" aria-label="Filter Batches">
+        <form method="GET" action="/schedules" id="schedules-filter-form" class="filter-form">
+            <!-- Course selection -->
+            <div class="filter-group">
+                <label for="filter-course">Course Program</label>
+                <select name="course_id" id="filter-course">
+                    <option value="">-- All Courses --</option>
+                                            <option value="19" >
+                            21-DAY ONLINE WEBINAR COURSE                        </option>
+                                            <option value="18" >
+                            FINAL COACHING PROGRAM                        </option>
+                                            <option value="17" >
+                            25-DAY LIVE NCLEX REVIEW COURSE                        </option>
+                                    </select>
+            </div>
+
+            <!-- Country Selection -->
+            <div class="filter-group">
+                <label for="filter-country">Region / Country</label>
+                <select name="country" id="filter-country">
+                    <option value="">-- All Countries --</option>
+                    <option value="US" >United States (US)</option>
+                    <option value="PH" >Philippines (PH)</option>
+                </select>
+            </div>
+
+            <!-- Online / Onsite mode -->
+            <div class="filter-group">
+                <label for="filter-mode">Learning Mode</label>
+                <select name="mode" id="filter-mode">
+                    <option value="">-- All Modes --</option>
+                    <option value="online" >Online Webinar</option>
+                    <option value="onsite" >Onsite Classroom</option>
+                </select>
+            </div>
+
+            <!-- Location Search text -->
+            <div class="filter-group">
+                <label for="filter-location">Branch / City</label>
+                <input type="text" name="location" id="filter-location" value="" placeholder="e.g. Manila, Cebu">
+            </div>
+
+            <button type="submit" class="primary-btn">Apply Filters</button>
+            <a href="/schedules" class="clear-btn">Reset</a>
+        </form>
+    </section>
+
+    <!-- Schedules Grid -->
+    <section id="schedules-grid-section" aria-labelledby="schedules-title">
+        <h2 id="schedules-title" class="sr-only">Available Schedules</h2>
+        
+                    <div class="schedules-grid">
+                                    <article class="schedule-card open">
+                        <header class="schedule-card-header">
+                            <h3>21-DAY ONLINE WEBINAR COURSE</h3>
+                            <span class="status-badge open">Open for Enrollment</span>
+                        </header>
+                        
+                        <div class="schedule-details">
+                            <p><strong>Location/Branch:</strong> Online Live Webinar Run</p>
+                            <p><strong>Dates:</strong> Aug 17, 2026 to Sep 11, 2026</p>
+                            <p><strong>Timezone:</strong> America/Los_Angeles</p>
+                            <p><strong>Capacity:</strong> 0 / 120 enrolled</p>
+                        </div>
+
+                        <footer class="schedule-card-footer">
+                                                            <a href="/register?course_id=19&schedule_id=8" class="register-btn">Register for Class &rarr;</a>
+                                                    </footer>
+                    </article>
+                                    <article class="schedule-card open">
+                        <header class="schedule-card-header">
+                            <h3>FINAL COACHING PROGRAM</h3>
+                            <span class="status-badge open">Open for Enrollment</span>
+                        </header>
+                        
+                        <div class="schedule-details">
+                            <p><strong>Location/Branch:</strong> Makati City Main Branch</p>
+                            <p><strong>Dates:</strong> Aug 17, 2026 to Sep 4, 2026</p>
+                            <p><strong>Timezone:</strong> Asia/Manila</p>
+                            <p><strong>Capacity:</strong> 0 / 40 enrolled</p>
+                        </div>
+
+                        <footer class="schedule-card-footer">
+                                                            <a href="/register?course_id=18&schedule_id=7" class="register-btn">Register for Class &rarr;</a>
+                                                    </footer>
+                    </article>
+                                    <article class="schedule-card open">
+                        <header class="schedule-card-header">
+                            <h3>25-DAY LIVE NCLEX REVIEW COURSE</h3>
+                            <span class="status-badge open">Open for Enrollment</span>
+                        </header>
+                        
+                        <div class="schedule-details">
+                            <p><strong>Location/Branch:</strong> Taft Avenue Manila Branch</p>
+                            <p><strong>Dates:</strong> Aug 10, 2026 to Sep 11, 2026</p>
+                            <p><strong>Timezone:</strong> Asia/Manila</p>
+                            <p><strong>Capacity:</strong> 0 / 50 enrolled</p>
+                        </div>
+
+                        <footer class="schedule-card-footer">
+                                                            <a href="/register?course_id=17&schedule_id=6" class="register-btn">Register for Class &rarr;</a>
+                                                    </footer>
+                    </article>
+                            </div>
+
+            <!-- Pagination -->
+                        </section>
+</main>
+    </main>
+
+    <!-- Footer Block -->
+    <footer class="footer">
+    <div class="footer__container">
+        <div class="footer__col">
+            <h3 class="footer__brand-title">Rachell<span class="footer__brand-gold">Allen</span></h3>
+            <p class="footer__brand-desc">Empowering nursing graduates globally to achieve licensure success. High-impact boot camps, structured preparation, and expert instructions.</p>
+            <div class="footer__socials">
+                <a href="#" class="footer__social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i>FB</a>
+                <a href="#" class="footer__social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i>TW</a>
+                <a href="#" class="footer__social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i>YT</a>
+            </div>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Quick Links</h4>
+            <ul class="footer__links">
+                <li><a href="../index.html" class="footer__link">Home</a></li>
+                <li><a href="../courses/index.html" class="footer__link">All Courses</a></li>
+                <li><a href="/schedules" class="footer__link">Schedules & Regions</a></li>
+                <li><a href="../register/index.html" class="footer__link">Onboard Registration</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Stay Updated</h4>
+            <p class="footer__newsletter-desc">Get notifications about new schedules, webinars, and exam study tips.</p>
+            <form class="footer__newsletter-form">
+                <div class="footer__newsletter-input-group">
+                    <input type="email" class="footer__newsletter-input" placeholder="Your email address" required aria-label="Email address for newsletter">
+                    <button type="submit" class="btn btn--secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <p>&copy; 2026 Rachell Allen Review Services. All rights reserved.</p>
+        <p>Targeting WCAG 2.1 AA Compliance & Accessibility</p>
+    </div>
+</footer>
+
+    <!-- Global Scripts -->
+    <script defer src="../assets/dist/app.min.js?v=0bb0f098"></script></body>
+</html>

@@ -1,0 +1,162 @@
+/* Card Library Components */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card:hover,
+.card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card__image-container {
+    position: relative;
+    height: 180px;
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+.card__badge {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background-color: var(--color-secondary);
+    color: #ffffff;
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+}
+
+.card__content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card__title {
+    font-size: var(--font-size-h5);
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card__desc {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    flex: 1;
+}
+
+.card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+    margin-top: auto;
+}
+
+.card__price {
+    font-size: var(--font-size-h5);
+    font-weight: 800;
+    color: var(--color-text-title);
+}
+
+/* 1. Course Card specifics */
+.course-card__info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-small);
+    margin-bottom: var(--spacing-md);
+}
+
+.course-card__info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+/* 2. Schedule Card layout */
+.schedule-card {
+    border-left: 5px solid var(--color-primary);
+}
+
+.schedule-card--soldout {
+    border-left-color: var(--color-error);
+    opacity: 0.85;
+}
+
+.schedule-card--urgent {
+    border-left-color: var(--color-warning);
+}
+
+.schedule-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* 3. Testimonial Card */
+.testimonial-card {
+    border-top: 4px solid var(--color-secondary);
+}
+
+.testimonial-card__quote {
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+}
+
+.testimonial-card__author {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.testimonial-card__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--color-text-title);
+    border: 2px solid var(--color-secondary);
+}
+
+.testimonial-card__info h4 {
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.testimonial-card__info span {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}

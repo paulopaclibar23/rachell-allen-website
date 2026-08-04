@@ -1,0 +1,155 @@
+/* Blog & Single Article page-specific styles */
+.blog-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .blog-layout {
+        grid-template-columns: 2.5fr 1fr;
+    }
+}
+
+/* 1. Article Typography & Reading progress */
+.article {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-xl);
+    overflow: hidden;
+}
+
+.article__header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.article__meta {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+    align-items: center;
+}
+
+.article__title {
+    font-size: var(--font-size-h1);
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+.article__content {
+    font-size: var(--font-size-body);
+    color: var(--color-dark-gray);
+    line-height: 1.8;
+}
+
+.article__content p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.article__content h2,
+.article__content h3 {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Reading Progress top bar */
+.progress-bar-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--color-secondary);
+    width: 0%;
+    z-index: 101;
+    transition: width 0.1s ease-out;
+}
+
+/* 2. Author Profile card */
+.author-box {
+    background-color: var(--color-light-gray);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    border-left: 4px solid var(--color-secondary);
+}
+
+.author-box__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: var(--font-size-h4);
+}
+
+.author-box__info h4 {
+    font-size: var(--font-size-body);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.author-box__bio {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+/* 3. Sidebar widget items */
+.sidebar-widget {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.sidebar-widget__title {
+    font-size: var(--font-size-h5);
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.sidebar-widget__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.sidebar-widget__link {
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+}
+
+.sidebar-widget__link:hover,
+.sidebar-widget__link:focus {
+    color: var(--color-secondary);
+}
+
+/* Reading time badge */
+.reading-time-badge {
+    background-color: var(--color-light-gray);
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    padding: 2px var(--spacing-sm);
+    border-radius: var(--radius-full);
+}

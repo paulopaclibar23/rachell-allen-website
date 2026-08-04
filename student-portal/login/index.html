@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="d0c79ce26287ef1dd532e198be2f8b892432ccdaafef818411194ead845825f1">
+    <script>
+        (function() {
+            // Theme toggling is restricted to Admin side. Public website strictly uses Light theme.
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('theme-dark');
+        })();
+    </script>
+    <meta name="description" content="Sleek, high-converting prep portal for NCLEX-RN and NCLEX-PN. Modernized boot camps, live webinars, and CRM scheduling.">
+    <title>Student Portal Login - Rachell Allen</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../assets/dist/app.min.css?v=ccb5cdf2"></head>
+<body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header Block -->
+    <header class="header">
+    <div class="header__container">
+        <a href="../../index.html" class="header__logo" aria-label="Rachell Allen Home">
+            <img src="../../assets/img/ra-logo2.png" alt="Rachell Allen Logo" class="header__logo-img" />
+        </a>
+        
+        <!-- Mobile hamburger toggle button -->
+        <button class="header__hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="header-navigation">
+            <span class="header__hamburger-bar"></span>
+            <span class="header__hamburger-bar"></span>
+            <span class="header__hamburger-bar"></span>
+        </button>
+
+        <nav class="header__nav" id="header-navigation" aria-label="Main Navigation">
+            <ul class="header__menu">
+                                    <li class="header__item"><a href="../../nclex-application/index.html" class="header__link">NCLEX Application</a></li>
+                    <li class="header__item"><a href="../../ielts/index.html" class="header__link">IELTS</a></li>
+                    <li class="header__item"><a href="/#testimonials-title" class="header__link">Success Stories</a></li>
+                    <li class="header__item"><a href="/#faq-title" class="header__link">FAQs</a></li>
+                    <li class="header__item"><a href="/#contact-cta-title" class="header__link">Contact Us</a></li>
+                    <li class="header__item"><a href="../../student-portal/login/index.html" class="btn btn--primary">Student Portal Login</a></li>
+                            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Main View Content Injection -->
+    <main id="main-content">
+        <!-- Student Portal Login Layout -->
+<div class="login-page-container">
+    <div class="login-card">
+        <div class="login-card__header">
+            <div class="brand-logo-container">
+                <img src="../../assets/img/ra-logo2.png" alt="Rachell Allen Review Services" style="height: 48px; width: auto; object-fit: contain;">
+            </div>
+            <h2>Student Portal</h2>
+            <p class="text-muted">Access your enrolled programs, study handbook, and review schedules</p>
+        </div>
+
+        
+        <form method="POST" action="/student-portal/login" novalidate>
+            <div class="form-group mb-4">
+                <label for="student-email" class="form-label form-label--required">Email Address</label>
+                <input type="email" id="student-email" name="email" value="" required class="form-control" placeholder="jane.smith@example.com">
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="student-number" class="form-label form-label--required">Student Number</label>
+                <input type="text" id="student-number" name="student_number" required class="form-control" placeholder="RA-2026-000001" pattern="RA-\d{4}-\d{6}">
+                <p class="form-helper-text">Format: RA-YYYY-XXXXXX (e.g. RA-2026-000001)</p>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full btn--lg mt-2">Login to Portal</button>
+        </form>
+    </div>
+</div>
+
+<style>
+.login-page-container {
+    max-width: 460px;
+    margin: 5rem auto;
+    padding: 0 var(--spacing-md);
+}
+
+.login-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    padding: var(--spacing-xxl) var(--spacing-xl);
+}
+
+.login-card__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.brand-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.login-card__header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-xs);
+}
+</style>
+    </main>
+
+    <!-- Footer Block -->
+    <footer class="footer">
+    <div class="footer__container">
+        <div class="footer__col">
+            <h3 class="footer__brand-title">Rachell<span class="footer__brand-gold">Allen</span></h3>
+            <p class="footer__brand-desc">Empowering nursing graduates globally to achieve licensure success. High-impact boot camps, structured preparation, and expert instructions.</p>
+            <div class="footer__socials">
+                <a href="#" class="footer__social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i>FB</a>
+                <a href="#" class="footer__social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i>TW</a>
+                <a href="#" class="footer__social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i>YT</a>
+            </div>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Quick Links</h4>
+            <ul class="footer__links">
+                <li><a href="../../index.html" class="footer__link">Home</a></li>
+                <li><a href="../../courses/index.html" class="footer__link">All Courses</a></li>
+                <li><a href="/schedules" class="footer__link">Schedules & Regions</a></li>
+                <li><a href="../../register/index.html" class="footer__link">Onboard Registration</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Stay Updated</h4>
+            <p class="footer__newsletter-desc">Get notifications about new schedules, webinars, and exam study tips.</p>
+            <form class="footer__newsletter-form">
+                <div class="footer__newsletter-input-group">
+                    <input type="email" class="footer__newsletter-input" placeholder="Your email address" required aria-label="Email address for newsletter">
+                    <button type="submit" class="btn btn--secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <p>&copy; 2026 Rachell Allen Review Services. All rights reserved.</p>
+        <p>Targeting WCAG 2.1 AA Compliance & Accessibility</p>
+    </div>
+</footer>
+
+    <!-- Global Scripts -->
+    <script defer src="../../assets/dist/app.min.js?v=0bb0f098"></script></body>
+</html>

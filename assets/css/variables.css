@@ -1,0 +1,72 @@
+/* CSS Variables & Core Design Tokens for Rachell Allen */
+
+:root {
+    /* Color Palette (HSL Tailored) */
+    --primary-h: 215;
+    --primary-s: 75%;
+    --primary-l: 25%;
+    
+    --color-primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l)); /* Navy */
+    --color-primary-light: hsl(var(--primary-h), var(--primary-s), var(--primary-l) + 15%);
+    --color-primary-bg: hsl(var(--primary-h), 20%, 97%);
+    
+    --secondary-h: 36;
+    --secondary-s: 90%;
+    --secondary-l: 50%;
+    
+    --color-secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l)); /* Gold */
+    --color-secondary-hover: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l) - 10%);
+    
+    --color-text-dark: hsl(210, 25%, 12%);
+    --color-text-muted: hsl(210, 15%, 45%);
+    --color-white: #ffffff;
+    
+    /* Sleek Gradients */
+    --gradient-hero: linear-gradient(135deg, var(--color-primary) 0%, hsl(var(--primary-h), var(--primary-s), var(--primary-l) - 5%) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-secondary) 0%, hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l) - 10%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+    
+    /* Typography Tokens */
+    --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    
+    /* Spacing & Borders */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Animations & Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-elastic: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Reset and Global Elements */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-primary-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}

@@ -1,0 +1,150 @@
+/* Homepage Stylesheet */
+
+/* Hero Banner Section */
+.hero-banner {
+    background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url('/assets/img/hero-nurses.webp');
+    background-size: cover;
+    background-position: center;
+    color: var(--color-white);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-banner__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-banner__title {
+    font-size: var(--font-size-h1);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+.hero-banner__title-gold {
+    color: #FBBF24;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-banner__subtitle {
+    font-size: var(--font-size-h5);
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Call-to-action divider */
+.cta-banner {
+    background: linear-gradient(135deg, #8B0000 0%, #610000 100%);
+    color: #ffffff;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    text-align: center;
+}
+
+.cta-banner h2,
+.cta-banner h3 {
+    color: #ffffff !important;
+    margin-bottom: var(--spacing-xs);
+}
+
+.cta-banner p {
+    color: rgba(255, 255, 255, 0.95) !important;
+    margin-bottom: 0;
+}
+
+.cta-banner .btn {
+    background-color: #ffffff;
+    color: #8B0000;
+    border-color: #ffffff;
+    font-weight: 700;
+}
+
+.cta-banner .btn:hover {
+    background-color: #FBBF24;
+    color: #1E293B;
+    border-color: #FBBF24;
+}
+
+.cta-banner__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .cta-banner__container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+/* Featured Courses Section */
+.featured-courses {
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+/* Success Metrics */
+.success-metrics {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
+.success-metrics__grid {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+    text-align: center;
+}
+
+.success-metrics__number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #FBBF24;
+    display: block;
+    line-height: 1;
+    margin-bottom: var(--spacing-xs);
+}
+
+.success-metrics__label {
+    font-size: var(--font-size-small);
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+}
+
+/* General Page Section Outlines */
+.section {
+    padding: var(--spacing-xxl) var(--spacing-lg);
+}
+
+.section__container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+}
+
+.section__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+}
+
+.section__title {
+    font-size: var(--font-size-h2);
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-sm);
+}
+
+.section__subtitle {
+    color: var(--color-text-muted);
+}

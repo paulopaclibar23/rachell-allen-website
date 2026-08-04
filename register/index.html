@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="13c45d0942dae12a5ba5e362641f6a6ad51dae91c9daad4313cfabe3f81c184f">
+    <script>
+        (function() {
+            // Theme toggling is restricted to Admin side. Public website strictly uses Light theme.
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.classList.remove('theme-dark');
+        })();
+    </script>
+    <meta name="description" content="Sleek, high-converting prep portal for NCLEX-RN and NCLEX-PN. Modernized boot camps, live webinars, and CRM scheduling.">
+    <title>Register for NCLEX Boot Camp</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@600&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../assets/dist/app.min.css?v=ccb5cdf2"></head>
+<body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header Block -->
+    <header class="header">
+    <div class="header__container">
+        <a href="../index.html" class="header__logo" aria-label="Rachell Allen Home">
+            <img src="../assets/img/ra-logo2.png" alt="Rachell Allen Logo" class="header__logo-img" />
+        </a>
+        
+        <!-- Mobile hamburger toggle button -->
+        <button class="header__hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="header-navigation">
+            <span class="header__hamburger-bar"></span>
+            <span class="header__hamburger-bar"></span>
+            <span class="header__hamburger-bar"></span>
+        </button>
+
+        <nav class="header__nav" id="header-navigation" aria-label="Main Navigation">
+            <ul class="header__menu">
+                                    <li class="header__item"><a href="../nclex-application/index.html" class="header__link">NCLEX Application</a></li>
+                    <li class="header__item"><a href="../ielts/index.html" class="header__link">IELTS</a></li>
+                    <li class="header__item"><a href="/#testimonials-title" class="header__link">Success Stories</a></li>
+                    <li class="header__item"><a href="/#faq-title" class="header__link">FAQs</a></li>
+                    <li class="header__item"><a href="/#contact-cta-title" class="header__link">Contact Us</a></li>
+                    <li class="header__item"><a href="../student-portal/login/index.html" class="btn btn--primary">Student Portal Login</a></li>
+                            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Main View Content Injection -->
+    <main id="main-content">
+        
+<div class="register-page">
+    <div class="register-container">
+        <div class="register-header">
+            <h2>Course Onboarding Registration</h2>
+            <p>Complete the steps below to secure your NCLEX boot camp seat</p>
+        </div>
+
+        <div class="register-body">
+            <!-- Wizard Progress Nodes -->
+            <div class="progress-bar">
+                <div class="progress-step progress-step--active" data-step="1">
+                    <div class="progress-step__marker">1</div>
+                    <div class="progress-step__label">Personal</div>
+                </div>
+                <div class="progress-step" data-step="2">
+                    <div class="progress-step__marker">2</div>
+                    <div class="progress-step__label">Program</div>
+                </div>
+                <div class="progress-step" data-step="3">
+                    <div class="progress-step__marker">3</div>
+                    <div class="progress-step__label">Review</div>
+                </div>
+                <div class="progress-step" data-step="4">
+                    <div class="progress-step__marker">4</div>
+                    <div class="progress-step__label">Payment</div>
+                </div>
+            </div>
+
+            <!-- Form Wrapper -->
+            <form id="wizardForm" action="/api/register" method="POST" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="csrf_token" value="13c45d0942dae12a5ba5e362641f6a6ad51dae91c9daad4313cfabe3f81c184f">
+
+                <!-- STEP 1: Personal Information -->
+                <div class="wizard-step wizard-step--active" data-step="1">
+                    <h3 class="mb-3">1. Personal Information</h3>
+                    
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label form-label--required">First Name</label>
+                            <input type="text" name="first_name" required class="form-control" placeholder="Jane">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Middle Name</label>
+                            <input type="text" name="middle_name" class="form-control" placeholder="Maria">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Last Name</label>
+                        <input type="text" name="last_name" required class="form-control" placeholder="Smith">
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label form-label--required">Email Address</label>
+                            <input type="email" name="email" required class="form-control" placeholder="jane.smith@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label form-label--required">Mobile Number</label>
+                            <input type="tel" name="phone" required class="form-control" placeholder="+63 917 123 4567">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Country of Residence</label>
+                        <select name="country" required class="form-control">
+                            <option value="">Select your country...</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="United States">United States</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Saudi Arabia">Saudi Arabia</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Street Address</label>
+                        <textarea name="address" required rows="3" class="form-control" placeholder="Unit, Street Address, City, State/Province"></textarea>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Program & Cohort -->
+                <div class="wizard-step" data-step="2">
+                    <h3 class="mb-3">2. Program & Cohort Selections</h3>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Select Target Review Program</label>
+                        <select name="course_id" id="courseSelect" required class="form-control">
+                            <option value="">Select a program...</option>
+                                                            <option value="17">25-DAY LIVE NCLEX REVIEW COURSE</option>
+                                                            <option value="18">FINAL COACHING PROGRAM</option>
+                                                            <option value="19">21-DAY ONLINE WEBINAR COURSE</option>
+                                                    </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Select Available Cohort Run</label>
+                        <select name="schedule_id" id="scheduleSelect" required class="form-control" disabled>
+                            <option value="">Select a schedule...</option>
+                                                            <option value="6" data-course="17">
+                                    Taft Avenue Manila Branch 
+                                    (Starts: Aug 10, 2026)
+                                </option>
+                                                            <option value="8" data-course="19">
+                                    Online Live Webinar Run 
+                                    (Starts: Aug 17, 2026)
+                                </option>
+                                                            <option value="7" data-course="18">
+                                    Makati City Main Branch 
+                                    (Starts: Aug 17, 2026)
+                                </option>
+                                                    </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Learning Mode</label>
+                        <select name="learning_mode" required class="form-control">
+                            <option value="Online Webinar">Live Online Webinar</option>
+                            <option value="Manila Onsite Boot Camp">Manila Onsite Boot Camp</option>
+                            <option value="US Onsite Boot Camp">US Onsite Boot Camp</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Assigned Branch Location</label>
+                        <input type="text" name="branch_location" required class="form-control" placeholder="e.g. Manila Main Office / Online">
+                    </div>
+                </div>
+
+                <!-- STEP 3: Review Details -->
+                <div class="wizard-step" data-step="3">
+                    <h3 class="mb-3">3. Review Your Information</h3>
+                    <p class="text-muted mb-4">Please verify that all details entered below are correct before proceeding to the final payment attachment step.</p>
+
+                    <div class="review-summary">
+                        <div class="review-summary__title">Personal Details</div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Full Name:</span>
+                            <span class="review-summary__value" id="rev_name">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Email Address:</span>
+                            <span class="review-summary__value" id="rev_email">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Mobile Phone:</span>
+                            <span class="review-summary__value" id="rev_phone">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Country:</span>
+                            <span class="review-summary__value" id="rev_country">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Address:</span>
+                            <span class="review-summary__value" id="rev_address">--</span>
+                        </div>
+                    </div>
+
+                    <div class="review-summary">
+                        <div class="review-summary__title">Selected Program & Cohort</div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Review Program:</span>
+                            <span class="review-summary__value" id="rev_course">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Cohort Run:</span>
+                            <span class="review-summary__value" id="rev_schedule">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Learning Mode:</span>
+                            <span class="review-summary__value" id="rev_mode">--</span>
+                        </div>
+                        <div class="review-summary__item">
+                            <span class="review-summary__label">Branch:</span>
+                            <span class="review-summary__value" id="rev_branch">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Payment & Submit -->
+                <div class="wizard-step" data-step="4">
+                    <h3 class="mb-3">4. Choose Payment Options</h3>
+
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Payment Method Option</label>
+                        <select name="payment_option" id="paymentOption" required class="form-control">
+                            <option value="pay_later">Pay Later (Create Inquiry & Contact Student Adviser)</option>
+                            <option value="upload_receipt">Upload Bank / GCash Receipt Immediately</option>
+                        </select>
+                    </div>
+
+                    <!-- Upload Receipt Section -->
+                    <div id="receiptUploadGroup" style="display: none;">
+                        <div class="form-group">
+                            <label class="form-label form-label--required">Drag and Drop Deposit / Transfer Receipt</label>
+                            <div class="form-upload" id="dropzone">
+                                <span class="form-upload__icon">📂</span>
+                                <p class="m-0">Drag and drop file here, or click to browse</p>
+                                <span class="form-helper-text">Acceptable formats: PNG, JPG, PDF (Max 10MB)</span>
+                                <input type="file" name="receipt" id="receiptInput" class="form-upload__input" accept="image/png, image/jpeg, application/pdf">
+                            </div>
+                            <div id="fileNameDisplay" style="margin-top:0.5rem; font-weight:600; color:var(--color-text-title); font-size:0.875rem;"></div>
+                        </div>
+                    </div>
+
+                    <h3 class="mb-3 mt-4">5. Emergency Contact Info</h3>
+                    <div class="form-group">
+                        <label class="form-label form-label--required">Emergency Contact Name & Mobile Number</label>
+                        <input type="text" name="emergency_contact" required class="form-control" placeholder="John Smith - +63 917 987 6543">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">How did you hear about us? (Referral Source)</label>
+                        <input type="text" name="referral_source" class="form-control" placeholder="Google search, Facebook, Friend referral...">
+                    </div>
+                </div>
+
+                <!-- Action Button Group -->
+                <div class="wizard-actions">
+                    <button type="button" class="btn btn--outline" id="prevBtn" disabled>Back</button>
+                    <button type="button" class="btn btn--primary" id="nextBtn">Next</button>
+                </div>
+            </form>
+
+            <!-- GORGEOUS SUCCESS BOARD OVERLAY (Hidden initially) -->
+            <div id="successOverlay" style="display: none; text-align: center; padding: 3rem 1.5rem;">
+                <div style="font-size: 5rem; color: var(--color-success); line-height: 1; margin-bottom: 1.5rem;">✓</div>
+                <h2 style="font-size: 2.25rem; color: var(--color-text-title); margin-bottom: 1rem;">Registration Submitted Successfully!</h2>
+                <p style="font-size: 1.125rem; color: var(--color-text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
+                    Thank you for applying. A dedicated Student Adviser has been assigned to your profile and will contact you via email or phone shortly to confirm your schedule and payment guidelines.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="../index.html" class="btn btn--primary">Return to Homepage</a>
+                    <a href="../student-portal/login/index.html" class="btn btn--secondary">Log in to Student Portal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+@media (max-width: 767px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let currentStep = 1;
+    const totalSteps = 4;
+    
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const steps = document.querySelectorAll('.wizard-step');
+    const progressNodes = document.querySelectorAll('.progress-step');
+    const wizardForm = document.getElementById('wizardForm');
+    const successOverlay = document.getElementById('successOverlay');
+    
+    // Dynamic course-to-schedules filter logic
+    const courseSelect = document.getElementById('courseSelect');
+    const scheduleSelect = document.getElementById('scheduleSelect');
+    
+    const allSchedules = [];
+    scheduleSelect.querySelectorAll('option').forEach(opt => {
+        if (opt.value) {
+            allSchedules.push({
+                value: opt.value,
+                text: opt.textContent.trim(),
+                courseId: opt.dataset.course
+            });
+        }
+    });
+
+    courseSelect.addEventListener('change', () => {
+        const selectedCourseId = courseSelect.value;
+        scheduleSelect.innerHTML = '<option value="">Select a schedule...</option>';
+        
+        if (!selectedCourseId) {
+            scheduleSelect.disabled = true;
+            return;
+        }
+
+        const filtered = allSchedules.filter(s => s.courseId === selectedCourseId);
+        
+        if (filtered.length === 0) {
+            scheduleSelect.innerHTML = '<option value="">No classes available for this course</option>';
+            scheduleSelect.disabled = true;
+        } else {
+            filtered.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.value;
+                opt.textContent = s.text;
+                scheduleSelect.appendChild(opt);
+            });
+            scheduleSelect.disabled = false;
+        }
+    });
+
+    // Payment Option receipt visibility logic
+    const paymentOption = document.getElementById('paymentOption');
+    const receiptUploadGroup = document.getElementById('receiptUploadGroup');
+    const receiptInput = document.getElementById('receiptInput');
+
+    paymentOption.addEventListener('change', () => {
+        if (paymentOption.value === 'upload_receipt') {
+            receiptUploadGroup.style.display = 'block';
+            receiptInput.required = true;
+        } else {
+            receiptUploadGroup.style.display = 'none';
+            receiptInput.required = false;
+        }
+    });
+
+    // Drag and drop zone implementation
+    const dropzone = document.getElementById('dropzone');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+
+    if (dropzone && receiptInput) {
+        // Trigger select on click
+        dropzone.addEventListener('click', () => receiptInput.click());
+
+        // File selection hover classes
+        ['dragenter', 'dragover'].forEach(name => {
+            dropzone.addEventListener(name, (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--color-secondary)';
+                dropzone.style.backgroundColor = 'rgba(139, 0, 0, 0.05)';
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(name => {
+            dropzone.addEventListener(name, (e) => {
+                e.preventDefault();
+                dropzone.style.borderColor = 'var(--color-border)';
+                dropzone.style.backgroundColor = 'var(--color-white)';
+            });
+        });
+
+        // Drop file
+        dropzone.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                receiptInput.files = files;
+                fileNameDisplay.textContent = `Selected file: ${files[0].name} (${(files[0].size / 1024 / 1024).toFixed(2)} MB)`;
+            }
+        });
+
+        receiptInput.addEventListener('change', () => {
+            if (receiptInput.files.length > 0) {
+                const file = receiptInput.files[0];
+                fileNameDisplay.textContent = `Selected file: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+            }
+        });
+    }
+
+    // Step switching controllers
+    function updateWizardUI() {
+        steps.forEach(s => {
+            s.classList.remove('wizard-step--active');
+            if (parseInt(s.dataset.step) === currentStep) {
+                s.classList.add('wizard-step--active');
+            }
+        });
+
+        progressNodes.forEach(node => {
+            const stepNum = parseInt(node.dataset.step);
+            node.classList.remove('progress-step--active', 'progress-step--completed');
+            if (stepNum === currentStep) {
+                node.classList.add('progress-step--active');
+            } else if (stepNum < currentStep) {
+                node.classList.add('progress-step--completed');
+            }
+        });
+
+        // Configure button labels & disabled status
+        prevBtn.disabled = currentStep === 1;
+        if (currentStep === totalSteps) {
+            nextBtn.textContent = 'Submit Registration';
+            nextBtn.classList.remove('btn--primary');
+            nextBtn.classList.add('btn--secondary');
+        } else {
+            nextBtn.textContent = 'Next';
+            nextBtn.classList.remove('btn--secondary');
+            nextBtn.classList.add('btn--primary');
+        }
+    }
+
+    function validateStep(step) {
+        const activeContainer = document.querySelector(`.wizard-step[data-step="${step}"]`);
+        const inputs = activeContainer.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+
+        inputs.forEach(input => {
+            // Skip checks for hidden elements
+            if (input.offsetParent === null) return;
+            
+            // Clear prior errors
+            if (window.Validation) window.Validation.clearError(input);
+
+            if (!input.value.trim()) {
+                isValid = false;
+                if (window.Validation) {
+                    window.Validation.showError(input, 'This field is required.');
+                }
+            } else if (input.type === 'email' && !window.Validation.isValidEmail(input.value)) {
+                isValid = false;
+                if (window.Validation) {
+                    window.Validation.showError(input, 'Please enter a valid email address.');
+                }
+            } else if (input.type === 'tel' && !window.Validation.isValidPhone(input.value)) {
+                isValid = false;
+                if (window.Validation) {
+                    window.Validation.showError(input, 'Please enter a valid mobile number.');
+                }
+            }
+        });
+
+        return isValid;
+    }
+
+    function compileReviewSummary() {
+        const elements = {
+            rev_name: wizardForm.first_name.value + ' ' + (wizardForm.middle_name.value ? wizardForm.middle_name.value + ' ' : '') + wizardForm.last_name.value,
+            rev_email: wizardForm.email.value,
+            rev_phone: wizardForm.phone.value,
+            rev_country: wizardForm.country.value,
+            rev_address: wizardForm.address.value,
+            rev_course: courseSelect.options[courseSelect.selectedIndex]?.text || '--',
+            rev_schedule: scheduleSelect.options[scheduleSelect.selectedIndex]?.text || '--',
+            rev_mode: wizardForm.learning_mode.value,
+            rev_branch: wizardForm.branch_location.value
+        };
+
+        for (const [id, value] of Object.entries(elements)) {
+            const span = document.getElementById(id);
+            if (span) span.textContent = value;
+        }
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (!validateStep(currentStep)) {
+            if (window.Components) {
+                window.Components.showToast('Please correct form validation errors before moving on.', 'error');
+            }
+            return;
+        }
+
+        if (currentStep < totalSteps) {
+            currentStep++;
+            if (currentStep === 3) {
+                compileReviewSummary();
+            }
+            updateWizardUI();
+        } else {
+            // Final submit
+            submitRegistrationWizard();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateWizardUI();
+        }
+    });
+
+    async function submitRegistrationWizard() {
+        const formData = new FormData(wizardForm);
+        
+        // Show loading state
+        nextBtn.disabled = true;
+        nextBtn.textContent = 'Submitting...';
+
+        try {
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: formData
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                // Clear form view and display success Overlay dashboard
+                wizardForm.style.display = 'none';
+                document.querySelector('.progress-bar').style.display = 'none';
+                successOverlay.style.display = 'block';
+                if (window.Components) {
+                    window.Components.showToast('Registration submitted successfully!');
+                }
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.textContent = 'Submit Registration';
+                
+                const err = result.error || 'Registration failed. Please check inputs.';
+                if (window.Components) {
+                    window.Components.showToast(err, 'error');
+                }
+                
+                // If there are key validation keys, highlight them
+                if (result.errors) {
+                    for (const [field, msg] of Object.entries(result.errors)) {
+                        const input = wizardForm.querySelector(`[name="${field}"]`);
+                        if (input && window.Validation) {
+                            window.Validation.showError(input, msg);
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            nextBtn.disabled = false;
+            nextBtn.textContent = 'Submit Registration';
+            console.error(error);
+            if (window.Components) {
+                window.Components.showToast('An internal error occurred. Please try again.', 'error');
+            }
+        }
+    }
+});
+</script>
+    </main>
+
+    <!-- Footer Block -->
+    <footer class="footer">
+    <div class="footer__container">
+        <div class="footer__col">
+            <h3 class="footer__brand-title">Rachell<span class="footer__brand-gold">Allen</span></h3>
+            <p class="footer__brand-desc">Empowering nursing graduates globally to achieve licensure success. High-impact boot camps, structured preparation, and expert instructions.</p>
+            <div class="footer__socials">
+                <a href="#" class="footer__social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i>FB</a>
+                <a href="#" class="footer__social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i>TW</a>
+                <a href="#" class="footer__social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i>YT</a>
+            </div>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Quick Links</h4>
+            <ul class="footer__links">
+                <li><a href="../index.html" class="footer__link">Home</a></li>
+                <li><a href="../courses/index.html" class="footer__link">All Courses</a></li>
+                <li><a href="/schedules" class="footer__link">Schedules & Regions</a></li>
+                <li><a href="../register/index.html" class="footer__link">Onboard Registration</a></li>
+            </ul>
+        </div>
+        <div class="footer__col">
+            <h4 class="footer__title">Stay Updated</h4>
+            <p class="footer__newsletter-desc">Get notifications about new schedules, webinars, and exam study tips.</p>
+            <form class="footer__newsletter-form">
+                <div class="footer__newsletter-input-group">
+                    <input type="email" class="footer__newsletter-input" placeholder="Your email address" required aria-label="Email address for newsletter">
+                    <button type="submit" class="btn btn--secondary">Subscribe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="footer__bottom">
+        <p>&copy; 2026 Rachell Allen Review Services. All rights reserved.</p>
+        <p>Targeting WCAG 2.1 AA Compliance & Accessibility</p>
+    </div>
+</footer>
+
+    <!-- Global Scripts -->
+    <script defer src="../assets/dist/app.min.js?v=0bb0f098"></script></body>
+</html>

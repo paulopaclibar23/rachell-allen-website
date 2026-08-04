@@ -1,0 +1,52 @@
+/* Typography and font scales */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text-title);
+    line-height: 1.25;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: var(--font-size-h1); font-weight: 700; }
+h2 { font-size: var(--font-size-h2); font-weight: 600; }
+h3 { font-size: var(--font-size-h3); font-weight: 500; }
+h4 { font-size: var(--font-size-h4); font-weight: 600; }
+h5 { font-size: var(--font-size-h5); font-weight: 500; }
+h6 { font-size: var(--font-size-h6); font-weight: 500; }
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.small-text {
+    font-size: var(--font-size-small);
+}
+
+.xs-text {
+    font-size: var(--font-size-xs);
+}
+
+/* Responsive typography scales (tablet & desktop) */
+@media (min-width: 768px) {
+    :root {
+        --font-size-h1: 3rem;
+        --font-size-h2: 2.25rem;
+        --font-size-h3: 1.85rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --font-size-h1: 3.5rem;
+        --font-size-h2: 2.5rem;
+        --font-size-h3: 2rem;
+    }
+}

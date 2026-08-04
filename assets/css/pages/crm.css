@@ -1,0 +1,140 @@
+/* CRM Kanban Board page-specific styles */
+.crm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.crm-filters {
+    background-color: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-xl);
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    align-items: flex-end;
+    border: 1px solid var(--color-border);
+}
+
+/* Kanban Columns Wrapper */
+.kanban {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-md);
+    align-items: flex-start;
+    height: calc(100vh - 220px);
+}
+
+.kanban-col {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    width: 280px;
+    flex-shrink: 0;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.kanban-col__header {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.kanban-col__title {
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    color: var(--color-text-title);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kanban-col__count {
+    font-size: var(--font-size-xs);
+    background-color: var(--color-light-gray);
+    color: var(--color-text-muted);
+    padding: 2px var(--spacing-xs);
+    border-radius: var(--radius-sm);
+}
+
+.kanban-col__cards {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    overflow-y: auto;
+    flex: 1;
+    min-height: 150px;
+}
+
+/* Draggable Kanban Card */
+.kanban-card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    cursor: grab;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    user-select: none;
+}
+
+.kanban-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.kanban-card:active {
+    cursor: grabbing;
+}
+
+.kanban-card--dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.kanban-card__name {
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    color: var(--color-text-title);
+    margin-bottom: var(--spacing-xs);
+}
+
+.kanban-card__meta {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.kanban-card__tag {
+    align-self: flex-start;
+    font-size: var(--font-size-xs);
+    background-color: rgba(40, 55, 120, 0.08);
+    color: var(--color-text-title);
+    font-weight: 600;
+    padding: 2px var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-xs);
+}
+
+/* Drop Target Dragover states */
+.kanban-col__cards--dragover {
+    background-color: rgba(40, 55, 120, 0.05);
+    border: 2px dashed var(--color-secondary);
+    border-radius: var(--radius-md);
+}
